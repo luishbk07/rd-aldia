@@ -7,8 +7,9 @@ export const article = {
       name: "title",
       title: "Título",
       type: "string",
-      validation: (Rule: { required: () => unknown; min: (n: number) => { max: (n: number) => unknown } }) =>
-        Rule.required().min(4).max(140),
+      validation: (Rule: {
+        required: () => { min: (n: number) => { max: (n: number) => unknown } };
+      }) => Rule.required().min(4).max(140),
     },
     {
       name: "slug",

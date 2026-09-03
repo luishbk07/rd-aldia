@@ -45,7 +45,7 @@ export const ui = {
   },
 };
 
-export function Card({ children, href, className, ...props }) {
+export function Card({ children, href, className = "", ...props }) {
   const classes = cx(ui.card, className);
   const inner = (
     <>
@@ -73,7 +73,7 @@ export function SectionTitle({
   children,
   eyebrow,
   as: Tag = "h2",
-  className,
+  className = "",
 }) {
   return (
     <div className={className}>
@@ -88,7 +88,7 @@ export function Button({
   children,
   variant = "primary",
   href,
-  className,
+  className = "",
   type = "button",
   ...props
 }) {
@@ -109,7 +109,7 @@ export function Button({
   );
 }
 
-export function Badge({ children, tone = "primary", className }) {
+export function Badge({ children, tone = "primary", className = "" }) {
   return (
     <span className={cx(ui.badge.base, ui.badge[tone] ?? ui.badge.primary, className)}>
       {children}
@@ -123,7 +123,7 @@ function applyTheme(theme) {
   document.documentElement.classList.toggle("dark", theme === "dark");
 }
 
-export function ThemeToggle({ className }) {
+export function ThemeToggle({ className = "" }) {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {

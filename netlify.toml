@@ -6,7 +6,7 @@
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
 
 # OpenNext Next.js runtime. Pinning this package opts out of Netlify's
 # automatic adapter updates; remove it from package.json later if you
