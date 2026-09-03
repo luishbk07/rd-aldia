@@ -77,3 +77,45 @@ body {
 .animate-verse-in {
   animation: verse-in 0.65s ease-out both;
 }
+
+.weather-map-root {
+  isolation: isolate;
+  z-index: 0;
+}
+
+.weather-map-root .leaflet-container {
+  height: 100%;
+  width: 100%;
+  background: #d7e6f2;
+  font-family: var(--font-inter), ui-sans-serif, sans-serif;
+}
+
+html.dark .weather-map-root .leaflet-container {
+  background: #0b1220;
+}
+
+.weather-map-root .leaflet-control-attribution {
+  max-width: min(100%, 22rem);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  color: var(--muted);
+}
+
+.weather-map-root .leaflet-control-zoom a {
+  background: var(--surface);
+  color: var(--heading);
+  border-color: var(--edge);
+}
+
+.weather-map-root .leaflet-control-zoom a:hover {
+  background: color-mix(in srgb, var(--surface) 80%, var(--heading) 8%);
+}
+
+.weather-wind-icon {
+  background: transparent;
+  border: 0;
+  color: #003366;
+}
+
+html.dark .weather-wind-icon {
+  color: #ffd700;
+}
