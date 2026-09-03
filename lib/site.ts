@@ -22,6 +22,7 @@ export const ROUTES = {
   verse: "/palabra-del-dia",
   finance: "/consejo-financiero",
   search: "/buscar",
+  advertise: "/anunciate",
 } as const;
 
 export const NAV_LINKS = [

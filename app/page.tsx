@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AdSlot from "@/components/AdSlot";
 import CultureCard from "@/components/CultureCard";
 import CurrencyTracker from "@/components/CurrencyTracker";
 import DailyVerse from "@/components/DailyVerse";
@@ -59,6 +60,10 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="mt-10 flex justify-center md:hidden">
+        <AdSlot size="mobile-banner" position="home-after-datos" />
+      </div>
+
       <section id="palabra-del-dia" className="mt-14">
         <SectionTitle eyebrow="Cada mañana">Para el día</SectionTitle>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
@@ -94,6 +99,10 @@ export default function Home() {
           </Button>
         </div>
       </section>
+
+      <div className="mt-10 flex justify-center md:hidden">
+        <AdSlot size="mobile-banner" position="home-after-destacados" />
+      </div>
 
       <section id="noticias" className="mt-14 max-w-3xl">
         <NewsAggregator limit={12} />

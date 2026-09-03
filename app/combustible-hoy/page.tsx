@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AdSlot from "@/components/AdSlot";
 import FuelPrices from "@/components/FuelPrices";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
@@ -18,6 +19,9 @@ export default function CombustibleHoyPage() {
         El MICM fija los precios cada viernes. No hay API en tiempo real: RD Al
         Día publica la vigencia semanal (cinco productos al consumidor).
       </p>
+      <div className="mt-8 flex justify-center md:hidden">
+        <AdSlot size="mobile-banner" position="section-between" />
+      </div>
       <div className="mt-10">
         <FuelPrices />
       </div>

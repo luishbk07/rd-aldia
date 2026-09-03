@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AdSlot from "@/components/AdSlot";
 import SportsSection from "@/components/SportsSection";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
@@ -18,6 +19,9 @@ export default function LidomResultadosPage() {
         MLB se actualiza solo desde la Stats API. LIDOM no tiene API pública: los
         resultados se publican en el panel, igual que el combustible.
       </p>
+      <div className="mt-8 flex justify-center md:hidden">
+        <AdSlot size="mobile-banner" position="section-between" />
+      </div>
       <div className="mt-10">
         <SportsSection />
       </div>

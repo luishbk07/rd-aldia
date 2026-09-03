@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AdSlot from "@/components/AdSlot";
 import CurrencyTracker from "@/components/CurrencyTracker";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
@@ -18,6 +19,9 @@ export default function DolarRdPage() {
         Referencia USD/EUR a pesos dominicanos y onza de oro en RD$. Si el
         mercado falla, se muestra la última tasa guardada.
       </p>
+      <div className="mb-8 flex justify-center md:hidden">
+        <AdSlot size="mobile-banner" position="section-between" />
+      </div>
       <CurrencyTracker />
     </div>
   );

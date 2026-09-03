@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState, type FormEvent, type ReactNode } from "react";
+import AdSlot from "@/components/AdSlot";
 import { ThemeToggle } from "@/components/ui";
 import { NAV_LINKS, SITE_NAME, SOCIAL_LINKS } from "@/lib/site";
 
@@ -380,6 +381,11 @@ function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/anunciate" className="hover:text-white">
+                Anúnciate
+              </Link>
+            </li>
+            <li>
               <Link href="/#datos-del-dia" className="hover:text-white">
                 Datos del día
               </Link>
@@ -433,6 +439,20 @@ export default function Layout({ children }: { children: ReactNode }) {
         Saltar al contenido
       </a>
       <Header />
+      <div className="border-b border-edge bg-background">
+        <div className="mx-auto flex max-w-7xl justify-center px-4 py-3 sm:px-6">
+          <div className="hidden md:block">
+            <AdSlot
+              size="leaderboard"
+              position="header-leaderboard"
+              lazy={false}
+            />
+          </div>
+          <div className="md:hidden">
+            <AdSlot size="mobile-banner" position="header-mobile" lazy={false} />
+          </div>
+        </div>
+      </div>
       <main id="contenido" className="flex-1">
         {children}
       </main>
