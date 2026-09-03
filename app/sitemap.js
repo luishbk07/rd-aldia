@@ -4,6 +4,7 @@ import { absoluteUrl, ROUTES } from "@/lib/site";
 
 export const revalidate = 3600;
 
+/** Public URLs: PAGE_SEO (incl. /clima) plus cultura and turismo slugs. */
 export default async function sitemap() {
   const now = new Date();
   const [articles, destinations] = await Promise.all([

@@ -217,6 +217,10 @@ export default function NewsAggregator({
                       <img
                         src={article.image}
                         alt=""
+                        width={64}
+                        height={64}
+                        loading="lazy"
+                        decoding="async"
                         className="mt-0.5 size-12 shrink-0 rounded-md object-cover ring-1 ring-edge sm:size-16"
                         referrerPolicy="no-referrer"
                       />

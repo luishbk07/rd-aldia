@@ -50,7 +50,7 @@ export default function OpenGraphImage() {
             {SITE_NAME}
           </div>
           <div style={{ marginTop: 20, fontSize: 32, color: "#d7e4f2" }}>
-            Noticias, combustible, dólar y béisbol. Al día.
+            Noticias, combustible, dólar, clima y béisbol. Al día.
           </div>
         </div>
         <div style={{ display: "flex", fontSize: 22, color: "#9fb4c9" }}>

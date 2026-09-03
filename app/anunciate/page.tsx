@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AdSlot from "@/components/AdSlot";
+import ConversionTracker from "@/components/seo/ConversionTracker";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
 import { AD_SIZES } from "@/lib/ads";
@@ -31,6 +32,7 @@ const PACKAGES = [
 export default function AnunciatePage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+      <ConversionTracker event="advertise_view" />
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
         Publicidad
       </p>

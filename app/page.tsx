@@ -1,31 +1,23 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import AdSlot from "@/components/AdSlot";
-import CultureCard from "@/components/CultureCard";
 import CurrencyTracker from "@/components/CurrencyTracker";
 import DailyVerse from "@/components/DailyVerse";
-import DestinationCard from "@/components/DestinationCard";
 import FinancialTip from "@/components/FinancialTip";
 import FuelPrices from "@/components/FuelPrices";
+import HomeFeatured from "@/components/HomeFeatured";
 import NewsAggregator from "@/components/NewsAggregator";
 import SportsSection from "@/components/SportsSection";
 import WeatherSection from "@/components/WeatherSection";
 import { Button, SectionTitle } from "@/components/ui";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
-import {
-  getFeaturedCulturePosts,
-  getFeaturedTourism,
-} from "@/lib/sanity-content";
 import { ROUTES } from "@/lib/site";
 
 export const revalidate = 60;
 export const metadata: Metadata = pageMetadata(PAGE_SEO.home);
 
-export default async function Home() {
-  const [culture, destinations] = await Promise.all([
-    getFeaturedCulturePosts(),
-    getFeaturedTourism(),
-  ]);
+export default function Home() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14">
       <section className="max-w-3xl">
@@ -91,29 +83,20 @@ export default async function Home() {
         </div>
       </section>
 
-      <section id="destacados" className="mt-14">
-        <SectionTitle eyebrow="Editorial">Lo más destacado</SectionTitle>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Lecturas de cultura y destinos para compartir. Entra a las secciones
-          para el archivo completo.
-        </p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {culture.map((article) => (
-            <CultureCard key={article.slug} article={article} />
-          ))}
-          {destinations.map((destination) => (
-            <DestinationCard key={destination.slug} destination={destination} />
-          ))}
-        </div>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Button href={ROUTES.culture} variant="outline">
-            Más cultura
-          </Button>
-          <Button href={ROUTES.tourism} variant="outline">
-            Más turismo
-          </Button>
-        </div>
-      </section>
+      <Suspense
+        fallback={
+          <section className="mt-14">
+            <div className="h-8 w-56 animate-pulse rounded bg-edge" />
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {Array.from({ length: 4 }, (_, index) => (
+                <div key={index} className="h-64 animate-pulse rounded-xl bg-edge/70" />
+              ))}
+            </div>
+          </section>
+        }
+      >
+        <HomeFeatured />
+      </Suspense>
 
       <div className="mt-10 flex justify-center md:hidden">
         <AdSlot size="mobile-banner" position="home-after-destacados" />

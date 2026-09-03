@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import Analytics from "@/components/seo/Analytics";
 import JsonLd from "@/components/seo/JsonLd";
 import Layout from "@/components/layout/Layout";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo/metadata";
 import { CORE_KEYWORDS, DEFAULT_DESCRIPTION, PAGE_SEO } from "@/lib/seo/pages";
 import { siteGraphSchema } from "@/lib/seo/schema";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
@@ -45,11 +47,13 @@ export const metadata: Metadata = {
     title: home.absoluteTitle,
     description: DEFAULT_DESCRIPTION,
     url: "/",
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: home.absoluteTitle,
     description: DEFAULT_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE.url],
   },
   robots: {
     index: true,
@@ -70,6 +74,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col font-body">
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <JsonLd data={siteGraphSchema()} />
+        <Analytics />
         <Layout>{children}</Layout>
       </body>
     </html>
