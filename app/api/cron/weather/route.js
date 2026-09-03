@@ -1,38 +1,32 @@
 import { NextResponse } from "next/server";
 import { jsonError } from "@/lib/admin/auth";
+import { cronAuthorized } from "@/lib/cron-auth";
 import { fetchWithFallback } from "@/lib/fetchWithFallback";
 import { fetchWeatherBundle, isWeatherBundle, storedWeatherBundle } from "@/lib/weather";
 
-export const dynamic = "force-dynamic";
+export async function GET(request) {
+  if (!cronAuthorized(request)) {
+    return jsonError("No autorizado.", 401);
+  }
 
-export async function GET() {
   try {
     const result = await fetchWithFallback({
       cacheKey: "rd-weather",
       ttlMs: 10 * 60 * 1000,
+      forceRefresh: true,
       fallbackFile: "data/fallbacks/weather.json",
       isValid: isWeatherBundle,
       store: storedWeatherBundle,
       primary: fetchWeatherBundle,
     });
 
-    return NextResponse.json(
-      {
-        ok: true,
-        source: result.source,
-        cached: result.cached,
-        fallback: result.fallback,
-        updatedAt: result.updatedAt,
-        timezone: result.timezone,
-        cities: result.cities,
-      },
-      {
-        headers: {
-          "Cache-Control": "public, s-maxage=600, stale-while-revalidate=1800",
-        },
-      },
-    );
+    return NextResponse.json({
+      ok: true,
+      source: result.source,
+      updatedAt: result.updatedAt,
+      cities: result.cities?.length ?? 0,
+    });
   } catch {
-    return jsonError("No se pudo cargar el clima.", 500);
+    return jsonError("El cron de clima falló.", 500);
   }
 }

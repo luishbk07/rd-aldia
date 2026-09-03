@@ -1,15 +1,10 @@
 import { NextResponse } from "next/server";
 import { jsonError } from "@/lib/admin/auth";
+import { cronAuthorized } from "@/lib/cron-auth";
 import { getLiveQuote } from "@/lib/currency/service";
 
-function authorized(request) {
-  const secret = process.env.CRON_SECRET;
-  if (!secret) return false;
-  return request.headers.get("authorization") === `Bearer ${secret}`;
-}
-
 export async function GET(request) {
-  if (!authorized(request)) {
+  if (!cronAuthorized(request)) {
     return jsonError("No autorizado.", 401);
   }
 

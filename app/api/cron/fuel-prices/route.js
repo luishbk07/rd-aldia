@@ -1,28 +1,25 @@
 import { NextResponse } from "next/server";
 import { jsonError } from "@/lib/admin/auth";
 import { getLatestFuelPrices, upsertFuelPrices } from "@/lib/admin/store";
+import { cronAuthorized } from "@/lib/cron-auth";
 import { scrapeMicmFuelNotice } from "@/lib/fuel/scrape-micm";
 
-function authorized(request) {
-  const secret = process.env.CRON_SECRET;
-  if (!secret) return false;
-  const header = request.headers.get("authorization");
-  return header === `Bearer ${secret}`;
-}
-
 export async function GET(request) {
-  if (!authorized(request)) {
+  if (!cronAuthorized(request)) {
     return jsonError("No autorizado.", 401);
   }
 
   try {
     const notice = await scrapeMicmFuelNotice();
     if (!notice.ok || !notice.prices) {
+      const fuel = await getLatestFuelPrices();
       return NextResponse.json({
-        ok: false,
+        ok: true,
         skipped: true,
+        source: "admin",
         reason: notice.reason,
         noticeUrl: notice.noticeUrl,
+        fuel,
       });
     }
 
