@@ -1,0 +1,15 @@
+# RD Al Día — Next.js 16 on Netlify (OpenNext adapter).
+# Keep SSR and API routes: never set output = "export" in next.config.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# OpenNext Next.js runtime. Pinning this package opts out of Netlify's
+# automatic adapter updates; remove it from package.json later if you
+# want Netlify to inject the latest adapter on every build.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
