@@ -23,6 +23,7 @@ export const ROUTES = {
   finance: "/consejo-financiero",
   search: "/buscar",
   advertise: "/anunciate",
+  studio: "/studio",
 } as const;
 
 export const NAV_LINKS = [

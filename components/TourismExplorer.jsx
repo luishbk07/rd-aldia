@@ -5,13 +5,13 @@ import CategoryFilter from "./CategoryFilter";
 import DestinationCard from "./DestinationCard";
 import { DESTINATION_CATEGORIES, DESTINATIONS } from "@/data/destinations";
 
-export default function TourismExplorer() {
+export default function TourismExplorer({ destinations = DESTINATIONS }) {
   const [category, setCategory] = useState("all");
 
   const list = useMemo(() => {
-    if (category === "all") return DESTINATIONS;
-    return DESTINATIONS.filter((item) => item.categories.includes(category));
-  }, [category]);
+    if (category === "all") return destinations;
+    return destinations.filter((item) => item.categories.includes(category));
+  }, [category, destinations]);
 
   return (
     <div>

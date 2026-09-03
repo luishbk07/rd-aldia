@@ -1,22 +1,44 @@
 import AdSlot from "./AdSlot";
+import PortableContent from "./PortableContent";
 
-export default function ArticleAdLayout({ intro, paragraphs, footer }) {
+export default function ArticleAdLayout({
+  intro,
+  paragraphs,
+  content,
+  footer,
+}) {
+  const portable = Array.isArray(content) && content.length > 0;
+  const before = portable ? content.slice(0, 2) : [];
+  const after = portable ? content.slice(2) : [];
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
       <div className="lg:grid lg:grid-cols-[minmax(0,48rem)_18.75rem] lg:justify-center lg:gap-10">
         <article>
           {intro}
           <div className="mt-8 space-y-5 text-base leading-7 text-foreground">
-            {paragraphs.map((paragraph, index) => (
-              <div key={paragraph.slice(0, 24)}>
-                <p>{paragraph}</p>
-                {index === 1 ? (
+            {portable ? (
+              <>
+                <PortableContent value={before} />
+                {after.length ? (
                   <div className="flex justify-center py-4 lg:hidden">
                     <AdSlot size="rectangle" position="article-inline" />
                   </div>
                 ) : null}
-              </div>
-            ))}
+                <PortableContent value={after} />
+              </>
+            ) : (
+              (paragraphs || []).map((paragraph, index) => (
+                <div key={paragraph.slice(0, 24)}>
+                  <p>{paragraph}</p>
+                  {index === 1 ? (
+                    <div className="flex justify-center py-4 lg:hidden">
+                      <AdSlot size="rectangle" position="article-inline" />
+                    </div>
+                  ) : null}
+                </div>
+              ))
+            )}
           </div>
           {footer}
         </article>

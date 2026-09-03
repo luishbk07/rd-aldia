@@ -4,21 +4,32 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ArticleAdLayout from "@/components/ArticleAdLayout";
 import JsonLd from "@/components/seo/JsonLd";
-import { DESTINATIONS, getDestination } from "@/data/destinations";
+import { DESTINATIONS } from "@/data/destinations";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
 import { destinationArticleSchema } from "@/lib/seo/schema";
+import {
+  getTourismDestination,
+  getTourismDestinations,
+} from "@/lib/sanity-content";
 import { ROUTES } from "@/lib/site";
+
+export const revalidate = 60;
 
 type Props = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return DESTINATIONS.map((item) => ({ slug: item.slug }));
+export async function generateStaticParams() {
+  const live = await getTourismDestinations();
+  const slugs = new Set([
+    ...DESTINATIONS.map((item) => item.slug),
+    ...live.map((item) => item.slug),
+  ]);
+  return [...slugs].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const destination = getDestination(slug);
+  const destination = await getTourismDestination(slug);
   if (!destination) return pageMetadata(PAGE_SEO.tourism);
 
   return pageMetadata(
@@ -43,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function DestinationPage({ params }: Props) {
   const { slug } = await params;
-  const destination = getDestination(slug);
+  const destination = await getTourismDestination(slug);
   if (!destination) notFound();
 
   return (
@@ -58,23 +69,27 @@ export default async function DestinationPage({ params }: Props) {
             <h1 className="mt-2 font-heading text-3xl font-semibold tracking-tight text-heading sm:text-4xl">
               {destination.name}
             </h1>
-            <p className="mt-3 text-sm font-medium text-primary dark:text-gold">
-              Mejor época: {destination.bestTime}
-            </p>
-            <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-xl bg-edge">
-              <Image
-                src={destination.image}
-                alt={destination.imageAlt}
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="object-cover"
-              />
-            </div>
-            <p className="mt-2 text-xs text-muted">Foto: Unsplash</p>
+            {destination.bestTime ? (
+              <p className="mt-3 text-sm font-medium text-primary dark:text-gold">
+                Mejor época: {destination.bestTime}
+              </p>
+            ) : null}
+            {destination.image ? (
+              <div className="relative mt-8 aspect-video overflow-hidden rounded-xl bg-edge">
+                <Image
+                  src={destination.image}
+                  alt={destination.imageAlt}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  className="object-cover"
+                />
+              </div>
+            ) : null}
           </>
         }
         paragraphs={destination.body}
+        content={destination.content}
         footer={
           <Link
             href={ROUTES.tourism}

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useState, type FormEvent, type ReactNode } from "react";
 import AdSlot from "@/components/AdSlot";
 import { ThemeToggle } from "@/components/ui";
-import { NAV_LINKS, SITE_NAME, SOCIAL_LINKS } from "@/lib/site";
+import { NAV_LINKS, ROUTES, SITE_NAME, SOCIAL_LINKS } from "@/lib/site";
 
 function SunIcon({ className }: { className?: string }) {
   return (
@@ -217,6 +217,12 @@ function Header() {
         </nav>
 
         <div className="flex items-center gap-1">
+          <Link
+            href={ROUTES.studio}
+            className="hidden rounded-md px-2.5 py-2 text-[0.8125rem] font-semibold text-accent hover:bg-accent/8 sm:inline-flex"
+          >
+            Admin
+          </Link>
           <ThemeToggle />
           <button
             type="button"
@@ -245,6 +251,14 @@ function Header() {
               {today}
             </p>
             <ul className="flex flex-col">
+              <li>
+                <Link
+                  href={ROUTES.studio}
+                  className="block rounded-md px-3 py-3 text-base font-semibold text-accent"
+                >
+                  Admin
+                </Link>
+              </li>
               {NAV_LINKS.map((link) => {
                 const active =
                   link.href === "/"
@@ -426,7 +440,7 @@ function Footer() {
 export default function Layout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
-  if (pathname.startsWith("/admin")) {
+  if (pathname.startsWith("/admin") || pathname.startsWith("/studio")) {
     return children;
   }
 

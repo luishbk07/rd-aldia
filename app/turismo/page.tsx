@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import TourismExplorer from "@/components/TourismExplorer";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
+import { getTourismDestinations } from "@/lib/sanity-content";
 
+export const revalidate = 60;
 export const metadata: Metadata = pageMetadata(PAGE_SEO.tourism);
 
-export default function TurismoPage() {
+export default async function TurismoPage() {
+  const destinations = await getTourismDestinations();
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
@@ -15,11 +19,10 @@ export default function TurismoPage() {
         Turismo
       </h1>
       <p className="mt-4 mb-8 max-w-2xl text-base leading-7 text-muted">
-        Ocho destinos para locales y visitas: playa, montaña, ciudad colonial y
-        un poco de aventura. Filtra y elige según el ánimo, no solo según el
-        hotel.
+        Destinos para locales y visitas: playa, montaña, ciudad colonial y un
+        poco de aventura. Filtra y elige según el ánimo, no solo según el hotel.
       </p>
-      <TourismExplorer />
+      <TourismExplorer destinations={destinations} />
     </div>
   );
 }

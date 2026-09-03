@@ -3,6 +3,7 @@ import Link from "next/link";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
 import { searchSite } from "@/lib/seo/search";
+import { getCulturePosts, getTourismDestinations } from "@/lib/sanity-content";
 import { ROUTES } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata(PAGE_SEO.search);
@@ -12,7 +13,11 @@ type Props = { searchParams: Promise<{ q?: string }> };
 export default async function BuscarPage({ searchParams }: Props) {
   const { q = "" } = await searchParams;
   const query = q.trim();
-  const results = searchSite(query);
+  const [culture, tourism] = await Promise.all([
+    getCulturePosts(),
+    getTourismDestinations(),
+  ]);
+  const results = searchSite(query, { culture, tourism });
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">

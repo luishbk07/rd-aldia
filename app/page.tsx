@@ -9,15 +9,22 @@ import FuelPrices from "@/components/FuelPrices";
 import NewsAggregator from "@/components/NewsAggregator";
 import SportsSection from "@/components/SportsSection";
 import { Button, SectionTitle } from "@/components/ui";
-import { featuredCulture } from "@/data/culture-articles";
-import { featuredDestinations } from "@/data/destinations";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
+import {
+  getFeaturedCulturePosts,
+  getFeaturedTourism,
+} from "@/lib/sanity-content";
 import { ROUTES } from "@/lib/site";
 
+export const revalidate = 60;
 export const metadata: Metadata = pageMetadata(PAGE_SEO.home);
 
-export default function Home() {
+export default async function Home() {
+  const [culture, destinations] = await Promise.all([
+    getFeaturedCulturePosts(),
+    getFeaturedTourism(),
+  ]);
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14">
       <section className="max-w-3xl">
@@ -83,10 +90,10 @@ export default function Home() {
           para el archivo completo.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredCulture().map((article) => (
+          {culture.map((article) => (
             <CultureCard key={article.slug} article={article} />
           ))}
-          {featuredDestinations().map((destination) => (
+          {destinations.map((destination) => (
             <DestinationCard key={destination.slug} destination={destination} />
           ))}
         </div>

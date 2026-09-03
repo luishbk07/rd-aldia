@@ -1,15 +1,10 @@
-import { article } from "./article";
-import { author } from "./author";
-import { dailyVerse } from "./dailyVerse";
-import { exchangeRate } from "./exchangeRate";
-import { fuelPrice } from "./fuelPrice";
-import { sportsResult } from "./sportsResult";
+import { type SchemaTypeDefinition } from "sanity";
+import { authorType } from "./authorType";
+import { blockContentType } from "./blockContentType";
+import { categoryType } from "./categoryType";
+import { destinationType } from "./destinationType";
+import { postType } from "./postType";
 
-export const schemaTypes = [
-  article,
-  author,
-  fuelPrice,
-  exchangeRate,
-  sportsResult,
-  dailyVerse,
-];
+export const schema: { types: SchemaTypeDefinition[] } = {
+  types: [blockContentType, categoryType, postType, destinationType, authorType],
+};
