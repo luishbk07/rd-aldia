@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { jsonError } from "@/lib/admin/auth";
-import { getLiveQuote } from "@/lib/currency/service";
+import { getNewsBundle } from "@/lib/news/aggregator";
 
 function authorized(request) {
   const secret = process.env.CRON_SECRET;
@@ -14,9 +14,15 @@ export async function GET(request) {
   }
 
   try {
-    const result = await getLiveQuote({ persist: true, forceRefresh: true });
-    return NextResponse.json({ ok: true, cached: result.cached, quote: result.quote });
+    const data = await getNewsBundle({ forceRefresh: true });
+    return NextResponse.json({
+      ok: true,
+      source: data.source,
+      cached: data.cached,
+      updatedAt: data.updatedAt,
+      articles: data.articles?.length ?? 0,
+    });
   } catch {
-    return jsonError("El cron de divisas falló.", 500);
+    return jsonError("El cron de noticias falló.", 500);
   }
 }

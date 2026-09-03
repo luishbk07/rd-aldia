@@ -13,3 +13,20 @@
 # want Netlify to inject the latest adapter on every build.
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[functions]
+  directory = "netlify/functions"
+
+# Schedules also live in each function's `export const config`.
+# Keep these in sync. Cron is UTC.
+[functions."update-currency"]
+  schedule = "*/15 * * * *"
+
+[functions."update-mlb-data"]
+  schedule = "*/15 * * * *"
+
+[functions."update-news"]
+  schedule = "*/15 * * * *"
+
+[functions."update-fuel-prices"]
+  schedule = "0 1 * * 6"

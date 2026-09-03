@@ -10,7 +10,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "scrape:fuel": "node scripts/scrape-micm-fuel.mjs"
+    "scrape:fuel": "node scripts/scrape-micm-fuel.mjs",
+    "cron:currency": "npx netlify functions:invoke update-currency",
+    "cron:mlb": "npx netlify functions:invoke update-mlb-data",
+    "cron:news": "npx netlify functions:invoke update-news",
+    "cron:fuel": "npx netlify functions:invoke update-fuel-prices"
   },
   "dependencies": {
     "@portabletext/react": "^8.0.1",
