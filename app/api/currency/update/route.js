@@ -9,6 +9,7 @@ const UpdateSchema = z.object({
   usdRate: z.number().positive().max(200),
   euroRate: z.number().positive().max(300),
   goldUsd: z.number().positive().max(20000),
+  goldRd: z.number().positive().max(2_000_000).optional(),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   source: z.enum(["manual", "bcrd"]).optional(),
 });
@@ -33,6 +34,7 @@ export async function POST(request) {
       usdRate: body.usdRate,
       euroRate: body.euroRate,
       goldUsd: body.goldUsd,
+      goldRd: body.goldRd,
       source: body.source || "bcrd",
       date: body.date,
     });

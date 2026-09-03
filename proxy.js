@@ -17,7 +17,7 @@ export function proxy(request) {
   }
 
   if (hasSession && isLogin) {
-    return NextResponse.redirect(new URL("/admin/dashboard", request.url));
+    return NextResponse.redirect(new URL("/admin", request.url));
   }
 
   return NextResponse.next();

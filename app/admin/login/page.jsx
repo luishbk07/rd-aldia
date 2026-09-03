@@ -27,7 +27,7 @@ function LoginForm() {
       if (!response.ok) throw new Error(data.error || "No se pudo iniciar sesión.");
 
       const next = searchParams.get("from");
-      router.replace(next?.startsWith("/admin") ? next : "/admin/dashboard");
+      router.replace(next?.startsWith("/admin") ? next : "/admin");
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : "No se pudo iniciar sesión.");

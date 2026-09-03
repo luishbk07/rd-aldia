@@ -1,14 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useCallback, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import AdminShell from "@/components/admin/AdminShell";
 import ArticleEditor from "@/components/admin/ArticleEditor";
 import CommentsModerator from "@/components/admin/CommentsModerator";
-import PriceEditor from "@/components/admin/PriceEditor";
-import CurrencyUpdateForm from "@/components/admin/CurrencyUpdateForm";
+import ExchangeRateEditor from "@/components/admin/ExchangeRateEditor";
+import FuelPriceEditor from "@/components/admin/FuelPriceEditor";
 import RateEditor from "@/components/admin/RateEditor";
 import SportsEditor from "@/components/admin/SportsEditor";
-import { Button } from "@/components/ui";
 
 const TABS = [
   { id: "fuel", label: "Combustible" },
@@ -18,11 +18,19 @@ const TABS = [
   { id: "comments", label: "Comentarios" },
 ];
 
-export default function AdminDashboardPage() {
+function DashboardInner() {
   const router = useRouter();
-  const [tab, setTab] = useState("fuel");
+  const searchParams = useSearchParams();
+  const requested = searchParams.get("tab");
+  const [tab, setTab] = useState(
+    TABS.some((item) => item.id === requested) ? requested : "fuel",
+  );
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (TABS.some((item) => item.id === requested)) setTab(requested);
+  }, [requested]);
 
   useEffect(() => {
     let cancelled = false;
@@ -57,42 +65,27 @@ export default function AdminDashboardPage() {
     setData((current) => (current ? { ...current, rates } : current));
   }, []);
 
-  async function logout() {
-    await fetch("/api/admin/logout", { method: "POST" });
-    router.replace("/admin/login");
-    router.refresh();
+  const onQuoteSaved = useCallback((quote) => {
+    setData((current) => (current ? { ...current, quote } : current));
+  }, []);
+
+  function selectTab(id) {
+    setTab(id);
+    router.replace(`/admin/dashboard?tab=${id}`);
   }
 
   return (
-    <div className="mx-auto min-h-full max-w-5xl px-4 py-8 sm:px-6">
-      <header className="mb-8 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-            Administración
-          </p>
-          <h1 className="mt-1 font-heading text-3xl font-semibold text-heading">
-            Panel RD Al Día
-          </h1>
-          <p className="mt-1 text-sm text-muted">
-            {data?.admin?.name ? `Sesión: ${data.admin.name}` : "Cargando sesión…"}
-            {data?.persistence === "local-file"
-              ? " · Persistencia local (.data) hasta conectar Supabase"
-              : data?.persistence === "supabase"
-                ? " · Supabase"
-                : ""}
-          </p>
-        </div>
-        <Button type="button" variant="outline" onClick={logout}>
-          Cerrar sesión
-        </Button>
-      </header>
-
+    <AdminShell
+      title="Editores"
+      subtitle={data?.admin?.name ? `Sesión: ${data.admin.name}` : "Cargando sesión…"}
+      persistence={data?.persistence}
+    >
       <nav className="mb-6 flex flex-wrap gap-2" aria-label="Secciones del panel">
         {TABS.map((item) => (
           <button
             key={item.id}
             type="button"
-            onClick={() => setTab(item.id)}
+            onClick={() => selectTab(item.id)}
             className={`rounded-md px-3 py-2 text-sm font-medium ${
               tab === item.id
                 ? "bg-primary text-primary-foreground"
@@ -108,12 +101,12 @@ export default function AdminDashboardPage() {
       {!data && !error ? <p className="text-sm text-muted">Cargando panel…</p> : null}
 
       {data && tab === "fuel" ? (
-        <PriceEditor initialValue={data.fuel} onSaved={onFuelSaved} />
+        <FuelPriceEditor initialValue={data.fuel} onSaved={onFuelSaved} />
       ) : null}
       {data && tab === "rates" ? (
-        <div>
+        <div className="space-y-6">
+          <ExchangeRateEditor initialValue={data.quote} onSaved={onQuoteSaved} />
           <RateEditor initialValue={data.rates} onSaved={onRatesSaved} />
-          <CurrencyUpdateForm />
         </div>
       ) : null}
       {data && tab === "sports" ? <SportsEditor /> : null}
@@ -129,6 +122,14 @@ export default function AdminDashboardPage() {
           onChange={(comments) => setData((current) => ({ ...current, comments }))}
         />
       ) : null}
-    </div>
+    </AdminShell>
+  );
+}
+
+export default function AdminDashboardPage() {
+  return (
+    <Suspense fallback={<p className="px-4 py-8 text-sm text-muted">Cargando editores…</p>}>
+      <DashboardInner />
+    </Suspense>
   );
 }
