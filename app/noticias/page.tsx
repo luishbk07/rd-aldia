@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import NewsAggregator from "@/components/NewsAggregator";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
 
-export const metadata: Metadata = {
-  title: "Noticias",
-  description:
-    "Titulares de Listín Diario, El Caribe, Diario Libre y El Nacional. Un solo lugar para enterarte y salir al medio original.",
-};
+export const metadata: Metadata = pageMetadata(PAGE_SEO.news);
 
 export default function NoticiasPage() {
   return (

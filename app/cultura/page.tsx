@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import CultureCard from "@/components/CultureCard";
 import { CULTURE_ARTICLES } from "@/data/culture-articles";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
 
-export const metadata: Metadata = {
-  title: "Cultura",
-  description:
-    "Colmado, merengue, bachata, carnaval y tradiciones dominicanas. Lecturas para recordar quiénes somos.",
-};
+export const metadata: Metadata = pageMetadata(PAGE_SEO.culture);
 
 export default function CulturaPage() {
   return (

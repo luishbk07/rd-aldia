@@ -112,7 +112,7 @@ export default function SportsSection({ variant = "full" }) {
   if (state.status === "error") {
     if (variant === "teaser") {
       return (
-        <a href="/deportes" className="block rounded-xl bg-[#1e4d2b] p-6 text-white shadow-card">
+        <a href="/lidom-resultados" className="block rounded-xl bg-[#1e4d2b] p-6 text-white shadow-card">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#e2c08d]">Deportes</p>
           <p className="mt-3 font-heading text-xl font-semibold">LIDOM + MLB 🇩🇴</p>
           <p className="mt-1 text-sm text-red-200">No se pudo cargar el marcador.</p>
@@ -131,7 +131,7 @@ export default function SportsSection({ variant = "full" }) {
 
   if (variant === "teaser") {
     return (
-      <a href="/deportes" className="block rounded-xl bg-[#1e4d2b] p-6 text-white shadow-card">
+      <a href="/lidom-resultados" className="block rounded-xl bg-[#1e4d2b] p-6 text-white shadow-card">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#e2c08d]">Deportes</p>
         {mlbGame ? (
           <>

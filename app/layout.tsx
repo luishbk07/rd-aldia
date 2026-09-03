@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import JsonLd from "@/components/seo/JsonLd";
 import Layout from "@/components/layout/Layout";
+import { CORE_KEYWORDS, DEFAULT_DESCRIPTION, PAGE_SEO } from "@/lib/seo/pages";
+import { siteGraphSchema } from "@/lib/seo/schema";
+import { getSiteUrl, SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -16,13 +20,42 @@ const inter = Inter({
   display: "swap",
 });
 
+const home = PAGE_SEO.home;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "RD Al Día",
-    template: "%s | RD Al Día",
+    default: home.absoluteTitle,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Hub diario de información para la República Dominicana: noticias, combustible, dólar, deportes, turismo y cultura.",
+  description: DEFAULT_DESCRIPTION,
+  keywords: [...CORE_KEYWORDS, ...home.keywords],
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: getSiteUrl() }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "news",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_DO",
+    siteName: SITE_NAME,
+    title: home.absoluteTitle,
+    description: DEFAULT_DESCRIPTION,
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: home.absoluteTitle,
+    description: DEFAULT_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
 };
 
 const themeInit = `(function(){try{var s=localStorage.getItem("rd-theme");var d=s==="dark"||(s!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",d);}catch(e){}})();`;
@@ -30,12 +63,13 @@ const themeInit = `(function(){try{var s=localStorage.getItem("rd-theme");var d=
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="es"
+      lang="es-DO"
       className={`${poppins.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col font-body">
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <JsonLd data={siteGraphSchema()} />
         <Layout>{children}</Layout>
       </body>
     </html>

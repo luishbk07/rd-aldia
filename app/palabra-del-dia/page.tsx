@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import DailyVerse from "@/components/DailyVerse";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
 
-export const metadata: Metadata = {
-  title: "Palabra del Día",
-  description:
-    "Versículo del día para la República Dominicana, con una nota práctica. Cambia cada jornada según la fecha.",
-};
+export const metadata: Metadata = pageMetadata(PAGE_SEO.verse);
 
 export default function PalabraDelDiaPage() {
   return (

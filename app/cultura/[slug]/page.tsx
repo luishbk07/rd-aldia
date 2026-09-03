@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import JsonLd from "@/components/seo/JsonLd";
 import { CULTURE_ARTICLES, getCultureArticle } from "@/data/culture-articles";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
+import { newsArticleSchema } from "@/lib/seo/schema";
+import { ROUTES } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -13,7 +18,17 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = getCultureArticle(slug);
-  return { title: article?.title ?? "Cultura" };
+  if (!article) return pageMetadata(PAGE_SEO.culture);
+
+  return pageMetadata(
+    {
+      title: article.title,
+      description: article.excerpt,
+      path: `${ROUTES.culture}/${article.slug}`,
+      keywords: ["cultura dominicana", "artículo", article.title],
+    },
+    { type: "article", image: article.image, imageAlt: article.imageAlt },
+  );
 }
 
 export default async function CultureArticlePage({ params }: Props) {
@@ -23,6 +38,7 @@ export default async function CultureArticlePage({ params }: Props) {
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+      <JsonLd data={newsArticleSchema(article)} />
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
         Cultura · {article.readMinutes} min de lectura
       </p>
@@ -47,7 +63,7 @@ export default async function CultureArticlePage({ params }: Props) {
         ))}
       </div>
       <Link
-        href="/cultura"
+        href={ROUTES.culture}
         className="mt-10 inline-block text-sm font-semibold text-primary hover:underline dark:text-gold"
       >
         ← Más cultura

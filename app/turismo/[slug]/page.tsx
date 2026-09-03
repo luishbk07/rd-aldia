@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import JsonLd from "@/components/seo/JsonLd";
 import { DESTINATIONS, getDestination } from "@/data/destinations";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
+import { destinationArticleSchema } from "@/lib/seo/schema";
+import { ROUTES } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -13,7 +18,26 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const destination = getDestination(slug);
-  return { title: destination?.name ?? "Turismo" };
+  if (!destination) return pageMetadata(PAGE_SEO.tourism);
+
+  return pageMetadata(
+    {
+      title: destination.name,
+      description: destination.description,
+      path: `${ROUTES.tourism}/${destination.slug}`,
+      keywords: [
+        "turismo RD",
+        destination.region,
+        destination.name,
+        ...destination.categories,
+      ],
+    },
+    {
+      type: "article",
+      image: destination.image,
+      imageAlt: destination.imageAlt,
+    },
+  );
 }
 
 export default async function DestinationPage({ params }: Props) {
@@ -23,6 +47,7 @@ export default async function DestinationPage({ params }: Props) {
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+      <JsonLd data={destinationArticleSchema(destination)} />
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
         Turismo · {destination.region}
       </p>
@@ -49,7 +74,7 @@ export default async function DestinationPage({ params }: Props) {
         ))}
       </div>
       <Link
-        href="/turismo"
+        href={ROUTES.tourism}
         className="mt-10 inline-block text-sm font-semibold text-primary hover:underline dark:text-gold"
       >
         ← Más destinos

@@ -86,7 +86,7 @@ export default function FuelPrices({ variant = "full" }) {
 
   if (variant === "teaser") {
     return (
-      <Card href="/combustible">
+      <Card href="/combustible-hoy">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
           Combustible
         </p>

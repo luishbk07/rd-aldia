@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import FinancialTip from "@/components/FinancialTip";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
 
-export const metadata: Metadata = {
-  title: "Consejo financiero",
-  description:
-    "Un consejo práctico cada día para el bolsillo en República Dominicana: ahorro, deudas, estafas y hábitos simples.",
-};
+export const metadata: Metadata = pageMetadata(PAGE_SEO.finance);
 
 export default function ConsejoFinancieroPage() {
   return (

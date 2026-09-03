@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import CurrencyTracker from "@/components/CurrencyTracker";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
 
-export const metadata: Metadata = { title: "Dólar" };
+export const metadata: Metadata = pageMetadata(PAGE_SEO.dollar);
 
-export default function DolarPage() {
+export default function DolarRdPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import CultureCard from "@/components/CultureCard";
 import CurrencyTracker from "@/components/CurrencyTracker";
 import DailyVerse from "@/components/DailyVerse";
@@ -9,6 +10,11 @@ import SportsSection from "@/components/SportsSection";
 import { Button, SectionTitle } from "@/components/ui";
 import { featuredCulture } from "@/data/culture-articles";
 import { featuredDestinations } from "@/data/destinations";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
+import { ROUTES } from "@/lib/site";
+
+export const metadata: Metadata = pageMetadata(PAGE_SEO.home);
 
 export default function Home() {
   return (
@@ -23,22 +29,22 @@ export default function Home() {
           cifras.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
-          <Button href="/combustible" variant="primary">
+          <Button href={ROUTES.fuel} variant="primary">
             Ver combustible
           </Button>
-          <Button href="/dolar" variant="secondary">
+          <Button href={ROUTES.dollar} variant="secondary">
             Tasa del dólar
           </Button>
-          <Button href="/palabra-del-dia" variant="outline">
+          <Button href={ROUTES.verse} variant="outline">
             Palabra del Día
           </Button>
-          <Button href="/consejo-financiero" variant="outline">
+          <Button href={ROUTES.finance} variant="outline">
             Consejo financiero
           </Button>
-          <Button href="/noticias" variant="outline">
+          <Button href={ROUTES.news} variant="outline">
             Noticias
           </Button>
-          <Button href="/deportes" variant="outline">
+          <Button href={ROUTES.sports} variant="outline">
             Deportes
           </Button>
         </div>
@@ -80,10 +86,10 @@ export default function Home() {
           ))}
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
-          <Button href="/cultura" variant="outline">
+          <Button href={ROUTES.culture} variant="outline">
             Más cultura
           </Button>
-          <Button href="/turismo" variant="outline">
+          <Button href={ROUTES.tourism} variant="outline">
             Más turismo
           </Button>
         </div>

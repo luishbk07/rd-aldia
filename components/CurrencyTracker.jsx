@@ -146,7 +146,7 @@ export default function CurrencyTracker({ variant = "full" }) {
   if (variant === "teaser") {
     return (
       <Link
-        href="/dolar"
+        href="/dolar-rd"
         className="group relative block rounded-xl border border-edge bg-surface p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover"
       >
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">

@@ -370,8 +370,13 @@ function Footer() {
           </h2>
           <ul className="mt-4 space-y-2 text-sm text-white/80">
             <li>
-              <Link href="/#titulares" className="hover:text-white">
+              <Link href="/noticias" className="hover:text-white">
                 Titulares
+              </Link>
+            </li>
+            <li>
+              <Link href="/buscar" className="hover:text-white">
+                Buscar
               </Link>
             </li>
             <li>

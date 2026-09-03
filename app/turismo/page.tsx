@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import TourismExplorer from "@/components/TourismExplorer";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { PAGE_SEO } from "@/lib/seo/pages";
 
-export const metadata: Metadata = {
-  title: "Turismo",
-  description:
-    "Zona Colonial, Punta Cana, Samaná, Constanza y más. Cuándo ir y por qué vale el viaje.",
-};
+export const metadata: Metadata = pageMetadata(PAGE_SEO.tourism);
 
 export default function TurismoPage() {
   return (
