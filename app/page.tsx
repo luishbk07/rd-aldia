@@ -8,6 +8,7 @@ import FinancialTip from "@/components/FinancialTip";
 import FuelPrices from "@/components/FuelPrices";
 import NewsAggregator from "@/components/NewsAggregator";
 import SportsSection from "@/components/SportsSection";
+import WeatherSection from "@/components/WeatherSection";
 import { Button, SectionTitle } from "@/components/ui";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
@@ -32,9 +33,9 @@ export default async function Home() {
           Todo lo que importa, al día.
         </SectionTitle>
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted sm:text-lg">
-          Combustible, dólar, béisbol, titulares, un versículo y un consejo de
-          bolsillo. Cultura y turismo para no olvidar el país más allá de las
-          cifras.
+          Combustible, dólar, clima, béisbol, titulares, un versículo y un
+          consejo de bolsillo. Cultura y turismo para no olvidar el país más
+          allá de las cifras.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button href={ROUTES.fuel} variant="primary">
@@ -42,6 +43,9 @@ export default async function Home() {
           </Button>
           <Button href={ROUTES.dollar} variant="secondary">
             Tasa del dólar
+          </Button>
+          <Button href={ROUTES.weather} variant="outline">
+            Clima
           </Button>
           <Button href={ROUTES.verse} variant="outline">
             Palabra del Día
@@ -65,6 +69,10 @@ export default async function Home() {
           <CurrencyTracker variant="teaser" />
           <SportsSection variant="teaser" />
         </div>
+      </section>
+
+      <section id="clima" className="mt-14">
+        <WeatherSection />
       </section>
 
       <div className="mt-10 flex justify-center md:hidden">

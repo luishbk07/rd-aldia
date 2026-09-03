@@ -1,0 +1,75 @@
+export const CITIES = [
+  {
+    id: "santo-domingo",
+    name: "Santo Domingo",
+    lat: 18.4861,
+    lon: -69.9312,
+    icon: "🏙️",
+    featured: true,
+  },
+  {
+    id: "santiago",
+    name: "Santiago",
+    lat: 19.4517,
+    lon: -70.697,
+    icon: "🏘️",
+  },
+  {
+    id: "puerto-plata",
+    name: "Puerto Plata",
+    lat: 19.7934,
+    lon: -70.6884,
+    icon: "⛵",
+  },
+  {
+    id: "punta-cana",
+    name: "Punta Cana",
+    lat: 18.582,
+    lon: -68.4055,
+    icon: "🏖️",
+  },
+  {
+    id: "la-romana",
+    name: "La Romana",
+    lat: 18.4273,
+    lon: -68.9728,
+    icon: "🌴",
+  },
+  {
+    id: "san-pedro",
+    name: "San Pedro de Macorís",
+    lat: 18.4539,
+    lon: -69.306,
+    icon: "🏟️",
+  },
+  {
+    id: "la-vega",
+    name: "La Vega",
+    lat: 19.2221,
+    lon: -70.5296,
+    icon: "⛪",
+  },
+  {
+    id: "san-francisco",
+    name: "San Francisco de Macorís",
+    lat: 19.3008,
+    lon: -70.2526,
+    icon: "🌾",
+  },
+  {
+    id: "barahona",
+    name: "Barahona",
+    lat: 18.2085,
+    lon: -71.1008,
+    icon: "🌊",
+  },
+  {
+    id: "san-cristobal",
+    name: "San Cristóbal",
+    lat: 18.4167,
+    lon: -70.109,
+    icon: "🌄",
+  },
+];
+
+export const FEATURED_CITY_ID = "santo-domingo";
