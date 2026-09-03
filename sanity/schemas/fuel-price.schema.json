@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rdaldia.do/schemas/fuelPrice",
+  "title": "FuelPrice",
+  "description": "Daily fuel prices in Dominican pesos (RD$) per gallon. One document per date.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_type",
+    "date",
+    "gasolinePremium",
+    "gasolineRegular",
+    "diesel",
+    "propane"
+  ],
+  "properties": {
+    "_id": { "type": "string" },
+    "_type": { "const": "fuelPrice" },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Effective date (America/Santo_Domingo). Unique."
+    },
+    "gasolinePremium": {
+      "$ref": "#/$defs/dopPerGallon",
+      "description": "Gasolina premium, RD$ / galón."
+    },
+    "gasolineRegular": {
+      "$ref": "#/$defs/dopPerGallon",
+      "description": "Gasolina regular, RD$ / galón."
+    },
+    "diesel": {
+      "$ref": "#/$defs/dopPerGallon",
+      "description": "Gasoil / diésel, RD$ / galón."
+    },
+    "propane": {
+      "$ref": "#/$defs/dopPerGallon",
+      "description": "GLP / propano, RD$ / galón."
+    }
+  },
+  "$defs": {
+    "dopPerGallon": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 1000,
+      "multipleOf": 0.01
+    }
+  }
+}

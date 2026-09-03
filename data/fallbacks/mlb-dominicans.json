@@ -1,0 +1,60 @@
+{
+  "players": [
+    {
+      "id": "665742",
+      "playerName": "Juan Soto",
+      "team": "NYM",
+      "avg": ".281",
+      "homeRuns": 23,
+      "rbi": 55,
+      "ops": ".944",
+      "season": 2026,
+      "updatedAt": "2026-09-02T23:00:00.000Z"
+    },
+    {
+      "id": "646240",
+      "playerName": "Rafael Devers",
+      "team": "SF",
+      "avg": ".254",
+      "homeRuns": 32,
+      "rbi": 83,
+      "ops": ".837",
+      "season": 2026,
+      "updatedAt": "2026-09-02T23:00:00.000Z"
+    },
+    {
+      "id": "665487",
+      "playerName": "Fernando Tatis Jr.",
+      "team": "SD",
+      "avg": ".284",
+      "homeRuns": 19,
+      "rbi": 70,
+      "ops": ".799",
+      "season": 2026,
+      "updatedAt": "2026-09-02T23:00:00.000Z"
+    },
+    {
+      "id": "660670",
+      "playerName": "Ronald Acuña Jr.",
+      "team": "ATL",
+      "avg": ".243",
+      "homeRuns": 14,
+      "rbi": 39,
+      "ops": ".761",
+      "season": 2026,
+      "updatedAt": "2026-09-02T23:00:00.000Z"
+    },
+    {
+      "id": "665489",
+      "playerName": "Vladimir Guerrero Jr.",
+      "team": "TOR",
+      "avg": ".262",
+      "homeRuns": 8,
+      "rbi": 53,
+      "ops": ".693",
+      "season": 2026,
+      "updatedAt": "2026-09-02T23:00:00.000Z"
+    }
+  ],
+  "updatedAt": "2026-09-02T23:00:00.000Z"
+}

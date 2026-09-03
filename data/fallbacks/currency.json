@@ -1,0 +1,13 @@
+{
+  "quote": {
+    "usdRate": 58.89,
+    "euroRate": 68.18,
+    "goldUsd": 4385.6,
+    "goldRd": 258227.98,
+    "date": "2026-09-02",
+    "source": "fallback",
+    "createdAt": "2026-09-02T23:00:00.000Z",
+    "official": false
+  },
+  "updatedAt": "2026-09-02T23:00:00.000Z"
+}

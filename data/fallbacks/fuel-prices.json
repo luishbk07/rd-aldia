@@ -1,0 +1,15 @@
+{
+  "fuel": {
+    "effectiveFrom": "2026-08-29",
+    "effectiveTo": "2026-09-04",
+    "gasolinePremium": 296.1,
+    "gasolineRegular": 279.6,
+    "gasoilRegular": 239.8,
+    "gasoilOptimo": 257.4,
+    "glp": 147.5,
+    "source": "manual",
+    "sourceUrl": null,
+    "updatedAt": "2026-08-29T21:00:00.000Z"
+  },
+  "updatedAt": "2026-08-29T21:00:00.000Z"
+}

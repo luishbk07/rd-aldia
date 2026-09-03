@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rdaldia.do/schemas",
+  "title": "RD Al Día CMS schemas",
+  "description": "Document types for Sanity (or any headless CMS). Each $ref is a standalone JSON Schema.",
+  "type": "object",
+  "$defs": {
+    "article": { "$ref": "./article.schema.json" },
+    "author": { "$ref": "./author.schema.json" },
+    "fuelPrice": { "$ref": "./fuel-price.schema.json" },
+    "exchangeRate": { "$ref": "./exchange-rate.schema.json" },
+    "sportsResult": { "$ref": "./sports-result.schema.json" },
+    "dailyVerse": { "$ref": "./daily-verse.schema.json" }
+  }
+}

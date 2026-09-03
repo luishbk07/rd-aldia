@@ -1,0 +1,6 @@
+{
+  "symbol": "XAU",
+  "name": "Gold",
+  "price": 4385.6,
+  "note": "Fallback only if api.gold-api.com is unavailable. Typical USD/oz spot."
+}

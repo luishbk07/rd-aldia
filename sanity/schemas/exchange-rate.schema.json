@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rdaldia.do/schemas/exchangeRate",
+  "title": "ExchangeRate",
+  "description": "Daily FX and gold snapshot. Buy/sell are RD$ per 1 USD or 1 EUR. One document per date.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_type",
+    "date",
+    "usdBuy",
+    "usdSell",
+    "euroBuy",
+    "euroSell",
+    "goldPrice"
+  ],
+  "properties": {
+    "_id": { "type": "string" },
+    "_type": { "const": "exchangeRate" },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Quote date (America/Santo_Domingo). Unique."
+    },
+    "usdBuy": {
+      "$ref": "#/$defs/dopPerUnit",
+      "description": "USD compra — RD$ por 1 dólar."
+    },
+    "usdSell": {
+      "$ref": "#/$defs/dopPerUnit",
+      "description": "USD venta — RD$ por 1 dólar. Should be >= usdBuy."
+    },
+    "euroBuy": {
+      "$ref": "#/$defs/dopPerUnit",
+      "description": "EUR compra — RD$ por 1 euro."
+    },
+    "euroSell": {
+      "$ref": "#/$defs/dopPerUnit",
+      "description": "EUR venta — RD$ por 1 euro. Should be >= euroBuy."
+    },
+    "goldPrice": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 20000,
+      "multipleOf": 0.01,
+      "description": "Gold spot price in USD per troy ounce."
+    }
+  },
+  "$defs": {
+    "dopPerUnit": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 500,
+      "multipleOf": 0.01
+    }
+  }
+}

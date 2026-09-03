@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rdaldia.do/schemas/author",
+  "title": "Author",
+  "description": "Supporting document referenced by Article.author.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["_type", "name", "slug"],
+  "properties": {
+    "_id": { "type": "string" },
+    "_type": { "const": "author" },
+    "name": { "type": "string", "minLength": 2, "maxLength": 80 },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "role": { "type": "string", "maxLength": 80 },
+    "bio": { "type": "string", "maxLength": 400 },
+    "photo": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "alt": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rdaldia.do/schemas/dailyVerse",
+  "title": "DailyVerse",
+  "description": "Palabra del Día — a dated Bible verse with translation and explanation. One document per date.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["_type", "bibleVerse", "translation", "explanation", "date"],
+  "properties": {
+    "_id": { "type": "string" },
+    "_type": { "const": "dailyVerse" },
+    "bibleVerse": {
+      "type": "string",
+      "minLength": 12,
+      "maxLength": 800,
+      "description": "Quoted scripture text (not the citation)."
+    },
+    "translation": {
+      "type": "string",
+      "enum": ["RVR1960", "NVI", "DHH", "NTV", "TLA", "other"],
+      "description": "Bible version used for bibleVerse."
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 40,
+      "maxLength": 2000,
+      "description": "Short pastoral or cultural note for Dominican readers."
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Calendar day this verse is published. Unique."
+    }
+  }
+}

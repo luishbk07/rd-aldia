@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rdaldia.do/schemas/sportsResult",
+  "title": "SportsResult",
+  "description": "A single LIDOM or MLB game result or live score.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_type",
+    "league",
+    "homeTeam",
+    "awayTeam",
+    "homeScore",
+    "awayScore",
+    "date",
+    "status"
+  ],
+  "properties": {
+    "_id": { "type": "string" },
+    "_type": { "const": "sportsResult" },
+    "league": {
+      "type": "string",
+      "enum": ["LIDOM", "MLB"],
+      "description": "Competition."
+    },
+    "homeTeam": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 80,
+      "description": "Home club name."
+    },
+    "awayTeam": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 80,
+      "description": "Away club name."
+    },
+    "homeScore": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 99,
+      "description": "Runs/points for the home team. Use 0 if the game has not started."
+    },
+    "awayScore": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 99,
+      "description": "Runs/points for the away team. Use 0 if the game has not started."
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "First pitch / scheduled start, ISO-8601."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["scheduled", "live", "final", "postponed", "canceled"],
+      "description": "Game state. Scores are authoritative when status is live or final."
+    }
+  }
+}

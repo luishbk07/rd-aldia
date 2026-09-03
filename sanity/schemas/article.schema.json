@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rdaldia.do/schemas/article",
+  "title": "Article",
+  "description": "Editorial article for news, culture, tourism, and other sections of RD Al Día.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_type",
+    "title",
+    "slug",
+    "category",
+    "featuredImage",
+    "excerpt",
+    "content",
+    "author",
+    "publishedAt"
+  ],
+  "properties": {
+    "_id": { "type": "string" },
+    "_type": { "const": "article" },
+    "title": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 140,
+      "description": "Headline shown on cards and the article page."
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 96,
+      "description": "URL segment, unique. Derived from title."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "noticias",
+        "nacionales",
+        "cultura",
+        "turismo",
+        "deportes",
+        "opinion"
+      ],
+      "description": "Section this article belongs to."
+    },
+    "featuredImage": {
+      "$ref": "#/$defs/imageAsset",
+      "description": "Hero image. Alt text is required."
+    },
+    "excerpt": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 280,
+      "description": "Short dek for cards, SEO, and social shares."
+    },
+    "content": {
+      "$ref": "#/$defs/portableText",
+      "description": "Rich-text body (Portable Text / block content)."
+    },
+    "author": {
+      "$ref": "#/$defs/authorRef",
+      "description": "Writer. Prefer a reference to an author document."
+    },
+    "publishedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Public timestamp. Used for ordering and the byline."
+    }
+  },
+  "$defs": {
+    "imageAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["alt"],
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "alt": { "type": "string", "minLength": 4, "maxLength": 160 },
+        "caption": { "type": "string", "maxLength": 200 },
+        "hotspot": {
+          "type": "object",
+          "properties": {
+            "x": { "type": "number" },
+            "y": { "type": "number" },
+            "height": { "type": "number" },
+            "width": { "type": "number" }
+          }
+        }
+      }
+    },
+    "authorRef": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["_ref"],
+          "properties": {
+            "_type": { "const": "reference" },
+            "_ref": { "type": "string", "description": "ID of an author document." }
+          }
+        },
+        { "$ref": "https://rdaldia.do/schemas/author" }
+      ]
+    },
+    "portableText": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["_type"],
+        "properties": {
+          "_type": {
+            "type": "string",
+            "enum": ["block", "image"]
+          },
+          "_key": { "type": "string" },
+          "style": {
+            "type": "string",
+            "enum": ["normal", "h2", "h3", "h4", "blockquote"]
+          },
+          "listItem": { "type": "string", "enum": ["bullet", "number"] },
+          "level": { "type": "integer", "minimum": 1 },
+          "children": { "type": "array" },
+          "markDefs": { "type": "array" },
+          "alt": { "type": "string" },
+          "url": { "type": "string", "format": "uri" }
+        }
+      }
+    }
+  }
+}

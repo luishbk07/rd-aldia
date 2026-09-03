@@ -1,0 +1,44 @@
+{
+  "results": [
+    {
+      "id": "fallback-lidom-1",
+      "date": "2026-01-18",
+      "homeTeam": "Tigres del Licey",
+      "awayTeam": "Águilas Cibaeñas",
+      "homeScore": 4,
+      "awayScore": 2,
+      "stadium": "Estadio Quisqueya Juan Marichal",
+      "status": "final",
+      "featured": true,
+      "createdAt": "2026-01-18T23:00:00.000Z"
+    },
+    {
+      "id": "fallback-lidom-2",
+      "date": "2026-01-18",
+      "homeTeam": "Estrellas Orientales",
+      "awayTeam": "Leones del Escogido",
+      "homeScore": 6,
+      "awayScore": 5,
+      "stadium": "Estadio Tetelo Vargas",
+      "status": "final",
+      "featured": false,
+      "createdAt": "2026-01-18T23:00:00.000Z"
+    }
+  ],
+  "standings": [
+    { "id": "2025-26-licey", "team": "Tigres del Licey", "wins": 32, "losses": 18, "pct": 0.64, "gamesBack": 0, "season": "2025-26" },
+    { "id": "2025-26-aguilas", "team": "Águilas Cibaeñas", "wins": 29, "losses": 21, "pct": 0.58, "gamesBack": 3, "season": "2025-26" },
+    { "id": "2025-26-escogido", "team": "Leones del Escogido", "wins": 27, "losses": 23, "pct": 0.54, "gamesBack": 5, "season": "2025-26" },
+    { "id": "2025-26-estrellas", "team": "Estrellas Orientales", "wins": 24, "losses": 26, "pct": 0.48, "gamesBack": 8, "season": "2025-26" },
+    { "id": "2025-26-gigantes", "team": "Gigantes del Cibao", "wins": 22, "losses": 28, "pct": 0.44, "gamesBack": 10, "season": "2025-26" },
+    { "id": "2025-26-toros", "team": "Toros del Este", "wins": 16, "losses": 34, "pct": 0.32, "gamesBack": 16, "season": "2025-26" }
+  ],
+  "spotlight": {
+    "playerName": "Junior Caminero",
+    "team": "Tigres del Licey",
+    "note": "Lideró la semana con jonrones y una racha de hits. Datos de respaldo hasta publicar la temporada en el panel.",
+    "weekOf": "2026-01-12",
+    "updatedAt": "2026-01-18T23:00:00.000Z"
+  },
+  "updatedAt": "2026-01-18T23:00:00.000Z"
+}

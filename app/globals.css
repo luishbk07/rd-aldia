@@ -1,26 +1,79 @@
 @import "tailwindcss";
+@config "../tailwind.config.js";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f9fa;
+  --foreground: #1a2332;
+  --heading: #003366;
+  --muted: #5b6777;
+  --surface: #ffffff;
+  --edge: #e4e8ee;
+  --rd-blue: #003366;
+  --rd-red: #c8102e;
+  --rd-gold: #ffd700;
+  --rd-white: #ffffff;
+}
+
+.dark {
+  --background: #0b1220;
+  --foreground: #e8eef5;
+  --heading: #f3f6fa;
+  --muted: #9aa8b8;
+  --surface: #122033;
+  --edge: #1e334d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-heading: var(--heading);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-edge: var(--edge);
+  --color-primary: #003366;
+  --color-primary-foreground: #ffffff;
+  --color-accent: #c8102e;
+  --color-accent-foreground: #ffffff;
+  --color-gold: #ffd700;
+  --color-gold-foreground: #003366;
+  --color-euro: #5b3a9e;
+  --color-rd-blue: var(--rd-blue);
+  --color-rd-red: var(--rd-red);
+  --color-rd-gold: var(--rd-gold);
+  --color-rd-white: var(--rd-white);
+  --font-heading: var(--font-poppins), ui-sans-serif, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, sans-serif;
+  --shadow-card: 0 1px 2px rgba(0, 51, 102, 0.06), 0 8px 24px rgba(0, 51, 102, 0.06);
+  --shadow-card-hover: 0 8px 28px rgba(0, 51, 102, 0.12), 0 0 0 1px rgba(0, 51, 102, 0.06);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes verse-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-verse-in {
+  animation: verse-in 0.65s ease-out both;
 }

@@ -1,0 +1,47 @@
+{
+  "articles": [
+    {
+      "id": "el-nacional:fallback-1",
+      "title": "Titulares dominicanos no están disponibles en este momento",
+      "link": "https://elnacional.com.do/",
+      "source": "El Nacional",
+      "sourceId": "el-nacional",
+      "publishedAt": "2026-09-02T23:00:00.000Z",
+      "image": null
+    },
+    {
+      "id": "diario-libre:fallback-1",
+      "title": "Consulta Diario Libre mientras se restablece el agregador",
+      "link": "https://www.diariolibre.com/",
+      "source": "Diario Libre",
+      "sourceId": "diario-libre",
+      "publishedAt": "2026-09-02T22:30:00.000Z",
+      "image": null
+    },
+    {
+      "id": "listin:fallback-1",
+      "title": "Entra a Listín Diario para las noticias del día",
+      "link": "https://listindiario.com/",
+      "source": "Listín Diario",
+      "sourceId": "listin",
+      "publishedAt": "2026-09-02T22:00:00.000Z",
+      "image": null
+    },
+    {
+      "id": "el-caribe:fallback-1",
+      "title": "El Caribe sigue publicando en su sitio oficial",
+      "link": "https://www.elcaribe.com.do/",
+      "source": "El Caribe",
+      "sourceId": "el-caribe",
+      "publishedAt": "2026-09-02T21:30:00.000Z",
+      "image": null
+    }
+  ],
+  "feeds": [
+    { "id": "listin", "name": "Listín Diario", "ok": false, "count": 1, "via": null },
+    { "id": "el-caribe", "name": "El Caribe", "ok": false, "count": 1, "via": null },
+    { "id": "diario-libre", "name": "Diario Libre", "ok": false, "count": 1, "via": null },
+    { "id": "el-nacional", "name": "El Nacional", "ok": false, "count": 1, "via": null }
+  ],
+  "updatedAt": "2026-09-02T23:00:00.000Z"
+}
