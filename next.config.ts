@@ -1,5 +1,11 @@
 import type { NextConfig } from "next";
 
+/**
+ * Netlify OpenNext (Next.js 16): keep the Node server.
+ * Do not set `output: "export"` — that would drop SSR, Route Handlers,
+ * and `/api/*`. Image optimization is handled by Netlify Image CDN
+ * from these remotePatterns; no custom loader is required.
+ */
 const nextConfig: NextConfig = {
   compiler: { styledComponents: true },
   serverExternalPackages: ["rss-parser"],
