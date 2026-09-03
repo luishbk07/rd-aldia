@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Poppins } from "next/font/google";
 import Analytics from "@/components/seo/Analytics";
 import JsonLd from "@/components/seo/JsonLd";
 import Layout from "@/components/layout/Layout";
+import { adsEnabled, getAdsenseClient } from "@/lib/ads";
 import { DEFAULT_OG_IMAGE } from "@/lib/seo/metadata";
 import { CORE_KEYWORDS, DEFAULT_DESCRIPTION, PAGE_SEO } from "@/lib/seo/pages";
 import { siteGraphSchema } from "@/lib/seo/schema";
@@ -73,6 +75,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col font-body">
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        {adsEnabled() ? (
+          <Script
+            id="rd-adsense"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${getAdsenseClient()}`}
+            strategy="afterInteractive"
+            crossOrigin="anonymous"
+          />
+        ) : null}
         <JsonLd data={siteGraphSchema()} />
         <Analytics />
         <Layout>{children}</Layout>

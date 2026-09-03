@@ -41,8 +41,8 @@ export default function AnunciatePage() {
       </h1>
       <p className="mt-4 text-base leading-7 text-muted">
         Llegamos a quien abre el día con combustible, dólar, titulares y
-        béisbol. Los espacios de abajo son los tamaños reales; hoy se ven como
-        reserva hasta conectar AdSense o una campaña directa.
+        béisbol. Los espacios de abajo son los tamaños reales. AdSense ya está
+        en el sitio; las unidades se llenan cuando Google apruebe la cuenta.
       </p>
 
       <section className="mt-10">

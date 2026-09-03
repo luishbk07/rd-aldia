@@ -7,6 +7,7 @@ import {
   getAdsenseClient,
   getAdSize,
   getAdSlot,
+  isConfiguredAdSlot,
   loadAdsenseScript,
 } from "@/lib/ads";
 import { ROUTES } from "@/lib/site";
@@ -33,6 +34,9 @@ function Placeholder({ size, fallbackContent }) {
 }
 
 export default function AdSlot({
+  slotId: slotIdProp,
+  format: formatProp,
+  layout: layoutProp,
   size = "rectangle",
   position,
   fallbackContent,
@@ -40,13 +44,17 @@ export default function AdSlot({
   className = "",
 }) {
   const spec = getAdSize(size);
-  const slot = position ? getAdSlot(position) : null;
-  const slotId = slot?.slotId;
+  const catalog = position ? getAdSlot(position) : null;
+  const slotId = slotIdProp || catalog?.slotId || "";
+  const format = formatProp || spec.adsenseFormat || "auto";
+  const layout = layoutProp || spec.layout;
   const client = getAdsenseClient();
-  const live = adsEnabled() && Boolean(slotId);
+  const live = adsEnabled() && isConfiguredAdSlot(slotId);
   const hostRef = useRef(null);
+  const insRef = useRef(null);
   const pushed = useRef(false);
   const [visible, setVisible] = useState(!lazy);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     if (!lazy || visible) return undefined;
@@ -77,9 +85,34 @@ export default function AdSlot({
       window.adsbygoogle.push({});
       pushed.current = true;
     } catch {
-      /* AdSense not ready */
+      setFailed(true);
     }
   }, [visible, live, client]);
+
+  useEffect(() => {
+    if (!visible || !live) return undefined;
+    const node = insRef.current;
+    if (!node) return undefined;
+
+    const check = () => {
+      if (node.getAttribute("data-ad-status") === "unfilled") {
+        setFailed(true);
+      }
+    };
+
+    const observer = new MutationObserver(check);
+    observer.observe(node, {
+      attributes: true,
+      attributeFilter: ["data-ad-status"],
+    });
+    const timeout = window.setTimeout(check, 8000);
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(timeout);
+    };
+  }, [visible, live]);
+
+  if (failed) return null;
 
   return (
     <aside
@@ -87,27 +120,25 @@ export default function AdSlot({
       className={`mx-auto overflow-hidden rounded-md border border-dashed border-edge bg-surface/80 ${className}`}
       style={{
         width: spec.width,
-        height: spec.height,
         maxWidth: "100%",
+        minHeight: spec.height,
       }}
       aria-label="Publicidad"
       data-ad-position={position || spec.key}
       data-ad-size={spec.key}
     >
       {!visible ? (
-        <div className="h-full w-full animate-pulse bg-edge/50" />
+        <div className="h-full w-full animate-pulse bg-edge/50" style={{ minHeight: spec.height }} />
       ) : live ? (
         <ins
+          ref={insRef}
           className="adsbygoogle"
-          style={{
-            display: "inline-block",
-            width: spec.width,
-            height: spec.height,
-          }}
+          style={{ display: "block", minHeight: spec.height }}
           data-ad-client={client}
           data-ad-slot={slotId}
-          data-ad-format={spec.adsenseFormat}
-          data-full-width-responsive="false"
+          data-ad-format={format}
+          data-ad-layout={layout || undefined}
+          data-full-width-responsive="true"
         />
       ) : (
         <Placeholder size={spec} fallbackContent={fallbackContent} />

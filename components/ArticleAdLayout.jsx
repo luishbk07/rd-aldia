@@ -22,7 +22,12 @@ export default function ArticleAdLayout({
                 <PortableContent value={before} />
                 {after.length ? (
                   <div className="flex justify-center py-4 lg:hidden">
-                    <AdSlot size="rectangle" position="article-inline" />
+                    <AdSlot
+                      size="in-article"
+                      position="article-inline"
+                      format="fluid"
+                      layout="in-article"
+                    />
                   </div>
                 ) : null}
                 <PortableContent value={after} />
@@ -33,7 +38,12 @@ export default function ArticleAdLayout({
                   <p>{paragraph}</p>
                   {index === 1 ? (
                     <div className="flex justify-center py-4 lg:hidden">
-                      <AdSlot size="rectangle" position="article-inline" />
+                      <AdSlot
+                        size="in-article"
+                        position="article-inline"
+                        format="fluid"
+                        layout="in-article"
+                      />
                     </div>
                   ) : null}
                 </div>
