@@ -24,8 +24,13 @@ export const ROUTES = {
   finance: "/consejo-financiero",
   search: "/buscar",
   advertise: "/anunciate",
+  about: "/acerca-de",
+  contact: "/contacto",
+  privacy: "/privacidad",
   studio: "/studio",
 } as const;
+
+export const CONTACT_EMAIL = "contacto@rdaldia.com";
 
 export const NAV_LINKS = [
   { href: ROUTES.home, label: "Inicio" },

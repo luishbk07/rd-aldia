@@ -395,24 +395,29 @@ function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/anunciate" className="hover:text-white">
+              <Link href={ROUTES.advertise} className="hover:text-white">
                 Anúnciate
+              </Link>
+            </li>
+            <li>
+              <Link href={ROUTES.about} className="hover:text-white">
+                Acerca de
+              </Link>
+            </li>
+            <li>
+              <Link href={ROUTES.contact} className="hover:text-white">
+                Contacto
+              </Link>
+            </li>
+            <li>
+              <Link href={ROUTES.privacy} className="hover:text-white">
+                Política de Privacidad
               </Link>
             </li>
             <li>
               <Link href="/#datos-del-dia" className="hover:text-white">
                 Datos del día
               </Link>
-            </li>
-            <li>
-              <span className="cursor-default text-white/45">
-                Contacto — placeholder
-              </span>
-            </li>
-            <li>
-              <span className="cursor-default text-white/45">
-                Aviso legal — placeholder
-              </span>
             </li>
           </ul>
         </div>
@@ -430,7 +435,10 @@ function Footer() {
 
       <div className="border-t border-white/10">
         <p className="mx-auto max-w-7xl px-4 py-5 text-center text-xs text-white/50 sm:px-6">
-          © {year} {SITE_NAME}. Todos los derechos reservados.
+          © {year} {SITE_NAME}. Todos los derechos reservados.{" "}
+          <Link href={ROUTES.privacy} className="text-white/70 underline-offset-2 hover:text-white hover:underline">
+            Política de Privacidad
+          </Link>
         </p>
       </div>
     </footer>
