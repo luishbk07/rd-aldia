@@ -73,8 +73,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${poppins.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col font-body">
-        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+      <body
+        className="flex min-h-full flex-col font-body"
+        suppressHydrationWarning
+      >
+        <Script id="rd-theme-init" strategy="beforeInteractive">
+          {themeInit}
+        </Script>
         {adsEnabled() ? (
           <Script
             id="rd-adsense"

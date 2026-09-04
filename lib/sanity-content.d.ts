@@ -32,6 +32,7 @@ export type TourismDestination = {
 
 export function mapSanityPost(post: unknown): CultureArticle | null;
 export function mapSanityDestination(item: unknown): TourismDestination | null;
+export function mapTourismPost(post: unknown): TourismDestination | null;
 export function getCulturePosts(): Promise<CultureArticle[]>;
 export function getCulturePost(slug: string): Promise<CultureArticle | null>;
 export function getTourismDestinations(): Promise<TourismDestination[]>;

@@ -4,7 +4,7 @@ import { DESTINATION_CATEGORIES } from "@/data/destinations";
 import { ROUTES } from "@/lib/site";
 
 export default function DestinationCard({ destination }) {
-  const labels = destination.categories
+  const labels = (destination.categories || [])
     .map((id) => DESTINATION_CATEGORIES.find((item) => item.id === id)?.label)
     .filter(Boolean)
     .join(" · ");
@@ -24,19 +24,25 @@ export default function DestinationCard({ destination }) {
         />
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gold-foreground/70 dark:text-gold">
-          {destination.region}
-        </p>
+        {destination.region ? (
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gold-foreground/70 dark:text-gold">
+            {destination.region}
+          </p>
+        ) : null}
         <h3 className="mt-1 font-heading text-xl font-semibold tracking-tight text-heading">
           {destination.name}
         </h3>
-        <p className="mt-2 text-xs font-medium text-primary dark:text-gold">
-          Mejor época: {destination.bestTime}
-        </p>
+        {destination.bestTime ? (
+          <p className="mt-2 text-xs font-medium text-primary dark:text-gold">
+            Mejor época: {destination.bestTime}
+          </p>
+        ) : null}
         <p className="mt-2 flex-1 text-sm leading-6 text-muted">{destination.description}</p>
-        <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-muted">
-          {labels}
-        </p>
+        {labels ? (
+          <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-muted">
+            {labels}
+          </p>
+        ) : null}
         <Link
           href={`${ROUTES.tourism}/${destination.slug}`}
           className="mt-4 text-sm font-semibold text-primary hover:underline dark:text-gold"
