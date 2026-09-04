@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "migrate:destinations": "node scripts/migrate-destinations.mjs",
     "scrape:fuel": "node scripts/scrape-micm-fuel.mjs",
     "cron:currency": "npx netlify functions:invoke update-currency",
     "cron:mlb": "npx netlify functions:invoke update-mlb",

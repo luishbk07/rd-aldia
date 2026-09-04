@@ -19,7 +19,7 @@ export const DESTINATIONS = [
     bestTime: "Noviembre – abril",
     categories: ["city", "colonial"],
     featured: true,
-    image: unsplash("photo-1555881400-74d7eac00235"),
+    image: unsplash("photo-1515542622106-78bda8ba0e5b"),
     imageAlt: "Calle empedrada de la Zona Colonial en Santo Domingo",
     description:
       "La cuna urbana de América: cal, piedra y faroles. Camina El Conde, entra a un patio y entiende por qué el país se cuenta también en ruinas vivas.",
@@ -104,7 +104,7 @@ export const DESTINATIONS = [
     bestTime: "Diciembre – abril",
     categories: ["beach"],
     featured: false,
-    image: unsplash("photo-1506953821276-2d1f7d68c337"),
+    image: unsplash("photo-1473116763249-2faaef81ccda"),
     imageAlt: "Playa de agua clara en Las Terrenas, Samaná",
     description:
       "Pueblo playero con acento europeo y alma de pescadores. Cosón, Punta Popy y atardeceres que no necesitan influencer.",
