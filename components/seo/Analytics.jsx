@@ -1,8 +1,17 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
+
+function getGaMeasurementId() {
+  return (
+    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||
+    process.env.GA_MEASUREMENT_ID ||
+    ""
+  );
+}
 
 export default function Analytics() {
   const plausible = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const gaId = getGaMeasurementId();
 
   return (
     <>
@@ -14,17 +23,7 @@ export default function Analytics() {
           defer
         />
       ) : null}
-      {gaId ? (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            strategy="afterInteractive"
-          />
-          <Script id="rd-ga4" strategy="afterInteractive">
-            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaId}',{anonymize_ip:true});`}
-          </Script>
-        </>
-      ) : null}
+      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
     </>
   );
 }
