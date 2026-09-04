@@ -8,6 +8,7 @@ import FuelPrices from "@/components/FuelPrices";
 import HomeFeatured from "@/components/HomeFeatured";
 import NewsAggregator from "@/components/NewsAggregator";
 import NewsletterForm from "@/components/NewsletterForm";
+import ShareButtons from "@/components/ShareButtons";
 import SportsSection from "@/components/SportsSection";
 import WeatherSection from "@/components/WeatherSection";
 import { Button, SectionTitle } from "@/components/ui";
@@ -59,10 +60,25 @@ export default function Home() {
             Turismo
           </Button>
         </div>
+        <ShareButtons
+          title={PAGE_SEO.home.title}
+          path={ROUTES.home}
+          variant="both"
+          className="mt-8"
+        />
       </section>
 
       <section id="datos-del-dia" className="mt-14">
-        <SectionTitle>Combustible, dólar y LIDOM de hoy</SectionTitle>
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <SectionTitle>Combustible, dólar y LIDOM de hoy</SectionTitle>
+          <ShareButtons
+            title="Combustible, dólar y LIDOM de hoy"
+            path={ROUTES.home}
+            hash="datos-del-dia"
+            compact
+            label="Compartir sección"
+          />
+        </div>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           <FuelPrices variant="teaser" />
           <CurrencyTracker variant="teaser" />
@@ -71,6 +87,14 @@ export default function Home() {
       </section>
 
       <section id="clima" className="mt-14">
+        <div className="mb-4">
+          <ShareButtons
+            title="Clima en República Dominicana"
+            path={ROUTES.weather}
+            compact
+            label="Compartir clima"
+          />
+        </div>
         <WeatherSection />
       </section>
 
@@ -79,7 +103,16 @@ export default function Home() {
       </div>
 
       <section id="palabra-del-dia" className="mt-14">
-        <SectionTitle eyebrow="Cada mañana">Palabra del Día y consejo financiero</SectionTitle>
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <SectionTitle eyebrow="Cada mañana">Palabra del Día y consejo financiero</SectionTitle>
+          <ShareButtons
+            title="Palabra del Día y consejo financiero"
+            path={ROUTES.home}
+            hash="palabra-del-dia"
+            compact
+            label="Compartir sección"
+          />
+        </div>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Un versículo y un consejo financiero para reflexionar cada día.
           Contenido nuevo todos los días.
@@ -124,6 +157,14 @@ export default function Home() {
       </section>
 
       <section id="noticias" className="mt-14 max-w-3xl">
+        <div className="mb-4">
+          <ShareButtons
+            title="Noticias de República Dominicana"
+            path={ROUTES.news}
+            compact
+            label="Compartir noticias"
+          />
+        </div>
         <NewsAggregator limit={12} />
       </section>
     </div>

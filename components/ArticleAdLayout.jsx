@@ -1,11 +1,14 @@
 import AdSlot from "./AdSlot";
 import PortableContent from "./PortableContent";
+import ShareButtons from "./ShareButtons";
 
 export default function ArticleAdLayout({
   intro,
   paragraphs,
   content,
   footer,
+  shareTitle,
+  sharePath,
 }) {
   const portable = Array.isArray(content) && content.length > 0;
   const before = portable ? content.slice(0, 2) : [];
@@ -16,6 +19,14 @@ export default function ArticleAdLayout({
       <div className="lg:grid lg:grid-cols-[minmax(0,48rem)_18.75rem] lg:justify-center lg:gap-10">
         <article>
           {intro}
+          {shareTitle && sharePath ? (
+            <ShareButtons
+              title={shareTitle}
+              path={sharePath}
+              variant="both"
+              className="mt-6"
+            />
+          ) : null}
           <div className="mt-8 space-y-5 text-base leading-7 text-foreground">
             {portable ? (
               <>

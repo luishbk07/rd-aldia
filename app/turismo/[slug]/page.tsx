@@ -104,6 +104,8 @@ export default async function DestinationPage({ params }: Props) {
         }
         paragraphs={destination.body}
         content={destination.content}
+        shareTitle={destination.name}
+        sharePath={`${ROUTES.tourism}/${destination.slug}`}
         footer={
           <>
             <RelatedLinks

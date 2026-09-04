@@ -90,6 +90,8 @@ export default async function CultureArticlePage({ params }: Props) {
         }
         paragraphs={article.body}
         content={article.content}
+        shareTitle={article.title}
+        sharePath={`${ROUTES.culture}/${article.slug}`}
         footer={
           <>
             <RelatedLinks

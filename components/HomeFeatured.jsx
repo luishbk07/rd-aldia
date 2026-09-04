@@ -1,5 +1,6 @@
 import CultureCard from "@/components/CultureCard";
 import DestinationCard from "@/components/DestinationCard";
+import ShareButtons from "@/components/ShareButtons";
 import { Button, SectionTitle } from "@/components/ui";
 import {
   getFeaturedCulturePosts,
@@ -15,7 +16,16 @@ export default async function HomeFeatured() {
 
   return (
     <section id="destacados" className="mt-14">
-      <SectionTitle eyebrow="Editorial">Cultura y turismo en República Dominicana</SectionTitle>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <SectionTitle eyebrow="Editorial">Cultura y turismo en República Dominicana</SectionTitle>
+        <ShareButtons
+          title="Cultura y turismo en República Dominicana"
+          path={ROUTES.home}
+          hash="destacados"
+          compact
+          label="Compartir sección"
+        />
+      </div>
       <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
         Lecturas de cultura y destinos para compartir. Entra a las secciones
         para el archivo completo.
