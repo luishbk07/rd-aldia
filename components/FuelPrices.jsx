@@ -83,8 +83,6 @@ export default function FuelPrices({ variant = "full" }) {
 
   const { products, validity, sourceNote, fuel } = state.data;
   const regular = products.find((item) => item.key === "gasolineRegular");
-  const dataSource = state.data.source === "cached" ? "cached" : "live";
-
   if (variant === "teaser") {
     return (
       <Card href="/combustible-hoy">
@@ -97,10 +95,9 @@ export default function FuelPrices({ variant = "full" }) {
         <p className="mt-1 text-sm text-muted">{validity}</p>
         <div className="mt-3">
           <DataStatusBadge
-            source={dataSource}
+            source="cached"
             updatedAt={fuel.updatedAt}
-            liveLabel="Precios oficiales del MICM"
-            cachedLabel="Precios oficiales del MICM"
+            clock="date"
           />
         </div>
       </Card>
@@ -117,10 +114,9 @@ export default function FuelPrices({ variant = "full" }) {
           Combustibles
         </h2>
         <DataStatusBadge
-          source={dataSource}
+          source="cached"
           updatedAt={fuel.updatedAt}
-          liveLabel="Precios oficiales del MICM"
-          cachedLabel="Precios oficiales del MICM"
+          clock="date"
         />
       </div>
       <p className="mt-2 text-sm font-medium text-heading">{validity}</p>
@@ -142,11 +138,9 @@ export default function FuelPrices({ variant = "full" }) {
         ))}
       </div>
 
-      {fuel.source === "manual" ? (
+      {sourceNote ? (
         <p className="mt-5 text-xs leading-5 text-muted">{sourceNote}</p>
-      ) : (
-        <p className="mt-5 text-xs leading-5 text-muted">{sourceNote}</p>
-      )}
+      ) : null}
 
       {fuel.sourceUrl ? (
         <a

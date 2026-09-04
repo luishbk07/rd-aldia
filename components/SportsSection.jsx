@@ -140,7 +140,7 @@ export default function SportsSection({ variant = "full" }) {
               {mlbGame.homeScore ?? "—"}
             </p>
             <p className="mt-1 text-sm text-white/70">
-              {mlbGame.status === "live" ? `MLB en vivo · ${mlbGame.inning}` : "MLB · automático"}
+              {mlbGame.status === "live" ? `MLB en vivo · ${mlbGame.inning}` : "Grandes Ligas"}
             </p>
           </>
         ) : lidomGame ? (
@@ -158,9 +158,10 @@ export default function SportsSection({ variant = "full" }) {
         )}
         <div className="mt-3">
           <DataStatusBadge
-            source={state.data.source === "cached" ? "cached" : "live"}
+            source={mlbGame?.status === "live" ? "live" : "cached"}
             updatedAt={state.data.updatedAt}
             tone="dark"
+            clock="time"
           />
         </div>
       </a>
@@ -176,9 +177,10 @@ export default function SportsSection({ variant = "full" }) {
         <h2 className="mt-1 font-heading text-2xl font-semibold">LIDOM y Grandes Ligas</h2>
         <div className="mt-2">
           <DataStatusBadge
-            source={state.data.source === "cached" ? "cached" : "live"}
+            source={league === "mlb" ? "live" : "cached"}
             updatedAt={state.data.updatedAt}
             tone="dark"
+            clock={league === "mlb" ? "time" : "auto"}
           />
         </div>
         <p className="mt-1 text-sm text-white/80">

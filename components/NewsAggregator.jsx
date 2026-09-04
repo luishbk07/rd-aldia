@@ -136,7 +136,6 @@ export default function NewsAggregator({
     );
   }
 
-  const dataSource = state.data.source === "cached" ? "cached" : "live";
   const usesGoogle = (state.data.feeds || []).some(
     (feed) => feed.via === "google-news",
   );
@@ -159,8 +158,9 @@ export default function NewsAggregator({
             <p className="text-sm font-medium text-muted">Últimos titulares</p>
           )}
           <DataStatusBadge
-            source={dataSource}
+            source="cached"
             updatedAt={state.data.updatedAt}
+            clock="time"
           />
         </div>
 

@@ -20,14 +20,6 @@ function formatDop(value, digits = 2) {
   }).format(Number(value) || 0);
 }
 
-function formatWhen(iso) {
-  if (!iso) return "Sin hora";
-  return new Intl.DateTimeFormat("es-DO", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(iso));
-}
-
 function Change({ change }) {
   if (!change || change.amount == null) {
     return <p className="text-xs text-muted">Sin comparación de ayer</p>;
@@ -139,9 +131,8 @@ export default function CurrencyTracker({ variant = "full" }) {
     );
   }
 
-  const { quote, change, history, fallback, source, updatedAt } = state.data;
+  const { quote, change, history, updatedAt } = state.data;
   const official = quote.official;
-  const dataSource = source === "cached" || fallback ? "cached" : "live";
 
   if (variant === "teaser") {
     return (
@@ -157,7 +148,11 @@ export default function CurrencyTracker({ variant = "full" }) {
         </p>
         <Change change={change?.usd} />
         <div className="mt-3">
-          <DataStatusBadge source={dataSource} updatedAt={updatedAt || quote.createdAt} />
+          <DataStatusBadge
+            source="cached"
+            updatedAt={updatedAt || quote.createdAt}
+            clock="time"
+          />
         </div>
       </Link>
     );
@@ -183,12 +178,14 @@ export default function CurrencyTracker({ variant = "full" }) {
             >
               {official ? "Tasa oficial BCRD" : "Referencia de mercado"}
             </span>
-            <DataStatusBadge source={dataSource} updatedAt={updatedAt || quote.createdAt} />
+            <DataStatusBadge
+              source="cached"
+              updatedAt={updatedAt || quote.createdAt}
+              clock="time"
+            />
           </div>
           <p className="mt-2 text-sm text-muted">
-            Actualizado {formatWhen(quote.createdAt)}
-            {fallback ? " · usando última tasa guardada" : ""}
-            {state.refreshing ? " · actualizando…" : ""}
+            {state.refreshing ? "Actualizando…" : "Tasa de referencia para el día."}
           </p>
         </div>
         <div className="flex gap-2">

@@ -20,11 +20,7 @@ function payloadFromFuel(fuel, source) {
         }))
       : [],
     validity: published ? formatValidityRange(fuel.effectiveFrom, fuel.effectiveTo) : null,
-    sourceNote: published
-      ? fuel.source === "manual"
-        ? "Datos ingresados manualmente en el panel de administración (aviso semanal del MICM)."
-        : "Datos tomados de un aviso semanal publicado por el MICM."
-      : null,
+    sourceNote: published ? "Precios oficiales del aviso semanal del MICM." : null,
     updatedAt: fuel?.updatedAt || null,
   };
 }

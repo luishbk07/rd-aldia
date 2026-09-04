@@ -125,16 +125,18 @@ export default function WeatherSection({
           <SectionTitle eyebrow="Antes de salir">Clima en el país</SectionTitle>
           {state.status === "ready" ? (
             <DataStatusBadge
-              source={state.data.source}
+              source={state.data.source === "cached" ? "cached" : "live"}
               updatedAt={state.data.updatedAt}
+              clock="time"
             />
           ) : null}
         </div>
       ) : state.status === "ready" ? (
         <div className="mb-4">
           <DataStatusBadge
-            source={state.data.source}
+            source={state.data.source === "cached" ? "cached" : "live"}
             updatedAt={state.data.updatedAt}
+            clock="time"
           />
         </div>
       ) : null}
