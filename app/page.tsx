@@ -8,6 +8,7 @@ import FuelPrices from "@/components/FuelPrices";
 import HomeFeatured from "@/components/HomeFeatured";
 import NewsAggregator from "@/components/NewsAggregator";
 import NewsletterForm from "@/components/NewsletterForm";
+import RandomYouTubeVideo from "@/components/RandomYouTubeVideo";
 import ShareButtons from "@/components/ShareButtons";
 import SportsSection from "@/components/SportsSection";
 import WeatherSection from "@/components/WeatherSection";
@@ -96,6 +97,26 @@ export default function Home() {
           />
         </div>
         <WeatherSection />
+      </section>
+
+      <section id="videos" className="mt-14">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <SectionTitle eyebrow="Videos">Ruta del Inversor Inteligente</SectionTitle>
+          <ShareButtons
+            title="Ruta del Inversor Inteligente"
+            path={ROUTES.home}
+            hash="videos"
+            compact
+            label="Compartir videos"
+          />
+        </div>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          Dinero claro, sin humo: cómo ahorrar, invertir y no dejarte llevar
+          por el ruido. Entra al video, suscríbete al canal y sigue la ruta.
+        </p>
+        <div className="mt-8 max-w-3xl">
+          <RandomYouTubeVideo />
+        </div>
       </section>
 
       <div className="mt-10 flex justify-center md:hidden">
