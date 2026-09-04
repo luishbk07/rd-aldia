@@ -56,9 +56,8 @@ export default function PrivacyPage() {
               personalizados o no personalizados.
             </li>
             <li>
-              El clima y los datos deportivos se actualizan automáticamente
-              para que veas información al día. Esos servicios no nos piden
-              tus datos personales.
+              Datos del clima actualizados automáticamente. Datos deportivos
+              en tiempo real. Eso no requiere tus datos personales.
             </li>
             <li>
               No pedimos cédula, tarjetas ni datos de salud. No vendemos tu
