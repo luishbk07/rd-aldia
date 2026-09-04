@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import DailyVerse from "@/components/DailyVerse";
+import RelatedLinks from "@/components/RelatedLinks";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
+import { SECTION_RELATED } from "@/lib/seo/related";
 
 export const metadata: Metadata = pageMetadata(PAGE_SEO.verse);
 
@@ -19,7 +21,12 @@ export default function PalabraDelDiaPage() {
         texto breve de las Escrituras y una nota para la vida cotidiana: casa,
         trabajo y esperanza.
       </p>
+      <h2 className="sr-only">Versículo de hoy en República Dominicana</h2>
       <DailyVerse />
+      <RelatedLinks
+        title="Consejo financiero, cultura y noticias"
+        links={SECTION_RELATED.verse}
+      />
     </div>
   );
 }

@@ -111,7 +111,7 @@ export default function FuelPrices({ variant = "full" }) {
       </p>
       <div className="mt-2 flex flex-wrap items-center gap-2">
         <h2 className="font-heading text-2xl font-semibold text-heading">
-          Combustibles
+          Precios de gasolina, gasoil y GLP
         </h2>
         <DataStatusBadge
           source="cached"
@@ -128,9 +128,9 @@ export default function FuelPrices({ variant = "full" }) {
             key={product.key}
             className="rounded-lg border border-edge bg-background px-4 py-4"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
               {product.label}
-            </p>
+            </h3>
             <p className="mt-2 font-heading text-xl font-semibold text-heading">
               {product.formatted}
             </p>

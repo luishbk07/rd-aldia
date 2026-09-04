@@ -59,11 +59,11 @@ export default function WindyMap() {
             </span>
           </div>
           <h2 className="mt-1 font-heading text-xl font-semibold tracking-tight text-heading sm:text-2xl">
-            Viento, lluvia y temperatura
+            Mapa del clima en República Dominicana
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-muted">
-            Mapa ECMWF de Windy centrado en República Dominicana, con partículas
-            de viento y capas de lluvia, temperatura y nubes.
+            Viento, lluvia, temperatura y nubes centrados en el país. Cambia de
+            capa y decide si sales con paraguas o con gafas.
           </p>
         </div>
 

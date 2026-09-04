@@ -15,7 +15,7 @@ export default async function HomeFeatured() {
 
   return (
     <section id="destacados" className="mt-14">
-      <SectionTitle eyebrow="Editorial">Lo más destacado</SectionTitle>
+      <SectionTitle eyebrow="Editorial">Cultura y turismo en República Dominicana</SectionTitle>
       <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
         Lecturas de cultura y destinos para compartir. Entra a las secciones
         para el archivo completo.

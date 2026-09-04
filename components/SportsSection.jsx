@@ -206,6 +206,7 @@ export default function SportsSection({ variant = "full" }) {
 
       {league === "mlb" ? (
         <>
+          <h3 className="sr-only">Resultados MLB y peloteros dominicanos</h3>
           {mlbGame?.status === "live" ? (
             <div className="mt-4 border-b border-white/10 px-5 pb-4">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#e2c08d]">
@@ -253,6 +254,7 @@ export default function SportsSection({ variant = "full" }) {
         </>
       ) : (
         <>
+          <h3 className="sr-only">Calendario y posiciones LIDOM</h3>
           {lidomGame ? (
             <div className="mt-4 border-b border-white/10 px-5 pb-4">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#e2c08d]">

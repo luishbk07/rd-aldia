@@ -20,7 +20,7 @@ export const DESTINATIONS = [
     categories: ["city", "colonial"],
     featured: true,
     image: unsplash("photo-1555881400-74d7eac00235"),
-    imageAlt: "Calle empedrada de ciudad antigua",
+    imageAlt: "Calle empedrada de la Zona Colonial en Santo Domingo",
     description:
       "La cuna urbana de América: cal, piedra y faroles. Camina El Conde, entra a un patio y entiende por qué el país se cuenta también en ruinas vivas.",
     body: [
@@ -37,7 +37,7 @@ export const DESTINATIONS = [
     categories: ["beach"],
     featured: true,
     image: unsplash("photo-1507525428034-b723cf961d3e"),
-    imageAlt: "Playa de arena y mar turquesa",
+    imageAlt: "Playa de arena clara y mar turquesa en Punta Cana",
     description:
       "El cartel mundial de la RD: arena clara, todo incluido y un mar que parece de anuncio. Vale ir más allá del hotel, hacia el pueblo y los arrecifes.",
     body: [
@@ -54,7 +54,7 @@ export const DESTINATIONS = [
     categories: ["beach", "adventure"],
     featured: false,
     image: unsplash("photo-1559827260-dc66d52bef19"),
-    imageAlt: "Costa tropical con palmeras",
+    imageAlt: "Costa tropical con palmeras en Samaná, República Dominicana",
     description:
       "Ballenas jorobadas en invierno, saltos de agua y playas que todavía saben a pueblo. Samaná es el este soñado sin tanto mármol de lobby.",
     body: [
@@ -71,7 +71,7 @@ export const DESTINATIONS = [
     categories: ["city"],
     featured: false,
     image: unsplash("photo-1449824913935-59a10b8d2000"),
-    imageAlt: "Perfil urbano al atardecer",
+    imageAlt: "Atardecer en Santiago de los Caballeros, Cibao",
     description:
       "La segunda ciudad no pide selfies de playa: pide monumentos, merengue típico y el orgullo cibaeño que mueve al país desde adentro.",
     body: [
@@ -88,7 +88,7 @@ export const DESTINATIONS = [
     categories: ["beach", "mountain", "adventure"],
     featured: false,
     image: unsplash("photo-1476514525535-07fb3b4ae5f1"),
-    imageAlt: "Costa con montañas al fondo",
+    imageAlt: "Costa y montañas del suroeste en Barahona",
     description:
       "Donde la sierra se tira al mar. Playas oscuras, Bahía de las Águilas cerca y un sur que todavía no se vendió del todo al todo incluido.",
     body: [
@@ -105,7 +105,7 @@ export const DESTINATIONS = [
     categories: ["beach"],
     featured: false,
     image: unsplash("photo-1506953821276-2d1f7d68c337"),
-    imageAlt: "Playa caribeña con agua clara",
+    imageAlt: "Playa de agua clara en Las Terrenas, Samaná",
     description:
       "Pueblo playero con acento europeo y alma de pescadores. Cosón, Punta Popy y atardeceres que no necesitan influencer.",
     body: [
@@ -122,7 +122,7 @@ export const DESTINATIONS = [
     categories: ["beach", "city", "adventure"],
     featured: false,
     image: unsplash("photo-1469854523086-cc02fe5d8800"),
-    imageAlt: "Costa vista desde un mirador",
+    imageAlt: "Costa del Atlántico vista desde un mirador en Puerto Plata",
     description:
       "El Atlántico, el teleférico al Isabel de Torres y un malecón con historia de turismo pionero. El norte tiene carácter.",
     body: [
@@ -139,7 +139,7 @@ export const DESTINATIONS = [
     categories: ["mountain", "adventure"],
     featured: false,
     image: unsplash("photo-1464822759023-fed622ff2c3b"),
-    imageAlt: "Valle de montañas con niebla",
+    imageAlt: "Valle de montañas con niebla en Constanza, Cordillera Central",
     description:
       "La Suiza criolla: fresa, repollo, chaqueta y nubes. Constanza recuerda que en la isla también se tiembla de frío.",
     body: [

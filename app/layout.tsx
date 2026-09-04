@@ -29,7 +29,7 @@ const home = PAGE_SEO.home;
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: home.absoluteTitle,
+    default: `${home.title} | ${SITE_NAME}`,
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
@@ -46,14 +46,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_DO",
     siteName: SITE_NAME,
-    title: home.absoluteTitle,
+    title: `${home.title} | ${SITE_NAME}`,
     description: DEFAULT_DESCRIPTION,
     url: "/",
     images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: home.absoluteTitle,
+    title: `${home.title} | ${SITE_NAME}`,
     description: DEFAULT_DESCRIPTION,
     images: [DEFAULT_OG_IMAGE.url],
   },

@@ -11,7 +11,7 @@ export const CULTURE_ARTICLES = [
     readMinutes: 6,
     featured: true,
     image: unsplash("photo-1559339352-11d035aa65de"),
-    imageAlt: "Calle caribeña con comercio de barrio",
+    imageAlt: "Colmado dominicano en una esquina de barrio en República Dominicana",
     body: [
       "En República Dominicana el colmado no es solo donde se compra el arroz. Es donde se fía hasta el quince, se discute el partido del Licey y se enteran primero de quién se mudó o quién llegó de Nueva York. El mostrador es un escenario pequeño y eterno.",
       "Nació como almacén de víveres y se quedó como institución. Hay colmados con nevera de cerveza, altavoz y un banco de madera que ha visto tres generaciones. El dueño conoce tu nombre, el de tu mamá y cuántos huevos te faltan para el desayuno.",
@@ -27,7 +27,7 @@ export const CULTURE_ARTICLES = [
     readMinutes: 5,
     featured: false,
     image: unsplash("photo-1429962714451-bb934ecdc4ec"),
-    imageAlt: "Público en un concierto con luces de escenario",
+    imageAlt: "Público en un concierto de merengue en República Dominicana",
     body: [
       "El merengue no pidió permiso en salones elegantes. Creció en fiestas de campo, con acordeón, güira y tambora, cuando el piso era tierra y el techo, estrellas. Por eso suena a cosecha, a gallera y a domingo largo.",
       "En el siglo XX salió del Cibao hacia la radio, los cabarets y las grandes orquestas. Se pulió sin perder el golpe. UNESCO lo reconoció como patrimonio, pero el reconocimiento verdadero sigue siendo el de una familia que no puede oír un güira sin mover un pie.",
@@ -43,7 +43,7 @@ export const CULTURE_ARTICLES = [
     readMinutes: 6,
     featured: true,
     image: unsplash("photo-1547153760-18fc86324438"),
-    imageAlt: "Pareja bailando en un salón con luz tenue",
+    imageAlt: "Pareja bailando bachata en un salón de República Dominicana",
     body: [
       "Hubo un tiempo en que la bachata era «música de guardia». Se escondía en bares, en radios de pueblo, en casetes que nadie ponía en la sala cuando llegaba visita. Hablaba de abandono, de ron y de cartas que no llegaban.",
       "Esa vergüenza ajena no mató el género: lo hizo más honesto. La guitarra, el bongó y la güira contaron lo que el merengue de orquesta a veces no podía: el despecho cotidiano, el barrio, la espera del que se fue.",
@@ -59,7 +59,7 @@ export const CULTURE_ARTICLES = [
     readMinutes: 5,
     featured: false,
     image: unsplash("photo-1533174072545-7a4b6ad7a6c3"),
-    imageAlt: "Multitud en una fiesta al aire libre",
+    imageAlt: "Fiesta patronal dominicana con palo encebado y público en la calle",
     body: [
       "El palo encebado parece broma hasta que lo intentas. Un tronco alto, engrasado, y en la punta un premio: dinero, un jamón, a veces una bicicleta. Abajo, una fila de valientes y un público que no perdona.",
       "No gana el más fuerte: gana el que organiza. Unos hacen escalera humana, otros se untan arena o harina, alguien grita la estrategia. Es deporte, teatro y orgullo de barrio en cinco minutos de suspenso.",
@@ -75,7 +75,7 @@ export const CULTURE_ARTICLES = [
     readMinutes: 6,
     featured: false,
     image: unsplash("photo-1514525253161-7a46d19cd819"),
-    imageAlt: "Escenario de festival con luces de colores",
+    imageAlt: "Carnaval dominicano con luces y disfraces de diablos cojuelos",
     body: [
       "Si el carnaval dominicano tuviera un santo laico, sería el diablo cojuelo: cojea, persigue, golpea con vejiga y se ríe de los que corren. La máscara —cuernos, dientes, espejos, papelillo— es un altar portátil.",
       "Hay genealogía española y raíz africana, y hay orgullo local: La Vega, Santiago, Santo Domingo, cada quien con su diablo. El disfraz cuesta meses de trabajo. No es souvenir; es identidad que se suda en febrero.",
@@ -91,7 +91,7 @@ export const CULTURE_ARTICLES = [
     readMinutes: 5,
     featured: false,
     image: unsplash("photo-1419242902214-272b3f66ee7a"),
-    imageAlt: "Cielo nocturno sobre un paisaje oscuro",
+    imageAlt: "Noche en el campo dominicano, cielo oscuro como cuando se ven cocuyos",
     body: [
       "Quien creció en patio de pueblo o en solar de ciudad todavía sin tanta luz, conoce el cocuyo: un punto verde que se enciende y se apaga, como si el monte respirara. Los niños lo cazaban con frascos. Los abuelos decían que anunciaba visitas o lluvia.",
       "Biología aparte —es un escarabajo que fabrica su propia lámpara— el cocuyo es patrimonio emocional. En un país de apagones, un insecto que no le debe nada a Edesur se siente casi político.",
@@ -107,7 +107,7 @@ export const CULTURE_ARTICLES = [
     readMinutes: 5,
     featured: false,
     image: unsplash("photo-1511379938547-c1f69419868d"),
-    imageAlt: "Instrumentos musicales sobre un escenario",
+    imageAlt: "Acordeón y tambora de merengue típico perico ripiao",
     body: [
       "El merengue típico, el perico ripiao, no necesita saxofones de big band. Con acordeón, tambora y güira basta para armar un país. Es el sonido de Santiago, de fiestas de palo, de radios que no se apagan en el Cibao.",
       "Se le ha dicho rústico, como si rústico fuera un insulto. Al contrario: es precisión popular. El acordeonista improvisa, el güirero marca el pulso, la tambora conversa. Quien baila sabe que el típico no perdona el paso flojo.",
@@ -123,7 +123,7 @@ export const CULTURE_ARTICLES = [
     readMinutes: 6,
     featured: false,
     image: unsplash("photo-1519892300165-cb5542fb47c7"),
-    imageAlt: "Tambores en un escenario",
+    imageAlt: "Tambores atabales de la herencia africana en República Dominicana",
     body: [
       "Las atabales —o palos— son el hilo africano que el Caribe no dejó cortar. Tambores de distinto tamaño, toques para el santo, cantos que suben como incienso. En muchas comunidades no es espectáculo: es obligación sagrada.",
       "Llegan con las cofradías, con el velorio, con la fiesta de palos. El cuerpo entra en trance o, al menos, en otro tiempo. Quien no ha sentido un palo de cerca no ha oído del todo la isla.",

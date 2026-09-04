@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import FinancialTip from "@/components/FinancialTip";
+import RelatedLinks from "@/components/RelatedLinks";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
+import { SECTION_RELATED } from "@/lib/seo/related";
 
 export const metadata: Metadata = pageMetadata(PAGE_SEO.finance);
 
@@ -19,7 +21,12 @@ export default function ConsejoFinancieroPage() {
         concretas para un costo de vida alto: listas, sobres, tasas y trampas
         que conviene conocer.
       </p>
+      <h2 className="sr-only">Consejo de ahorro y deudas para hoy</h2>
       <FinancialTip />
+      <RelatedLinks
+        title="Dólar RD, combustible y Palabra del Día"
+        links={SECTION_RELATED.finance}
+      />
     </div>
   );
 }

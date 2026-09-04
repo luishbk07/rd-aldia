@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { DESTINATION_CATEGORIES } from "@/data/destinations";
+import { ROUTES } from "@/lib/site";
 
 export default function DestinationCard({ destination }) {
   const labels = destination.categories
@@ -13,7 +14,10 @@ export default function DestinationCard({ destination }) {
       <div className="relative aspect-[16/10] overflow-hidden bg-edge">
         <Image
           src={destination.image}
-          alt={destination.imageAlt}
+          alt={
+            destination.imageAlt ||
+            `${destination.name} — turismo en República Dominicana`
+          }
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
@@ -34,7 +38,7 @@ export default function DestinationCard({ destination }) {
           {labels}
         </p>
         <Link
-          href={`/turismo/${destination.slug}`}
+          href={`${ROUTES.tourism}/${destination.slug}`}
           className="mt-4 text-sm font-semibold text-primary hover:underline dark:text-gold"
         >
           Ver más

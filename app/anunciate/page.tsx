@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import AdSlot from "@/components/AdSlot";
 import ConversionTracker from "@/components/seo/ConversionTracker";
+import RelatedLinks from "@/components/RelatedLinks";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
+import { SECTION_RELATED } from "@/lib/seo/related";
 import { AD_SIZES } from "@/lib/ads";
 import { SITE_NAME } from "@/lib/site";
 
@@ -47,7 +49,7 @@ export default function AnunciatePage() {
 
       <section className="mt-10">
         <h2 className="font-heading text-xl font-semibold text-heading">
-          Formatos
+          Formatos de publicidad
         </h2>
         <ul className="mt-4 divide-y divide-edge rounded-xl border border-edge bg-surface">
           {PACKAGES.map((item) => (
@@ -67,7 +69,7 @@ export default function AnunciatePage() {
 
       <section className="mt-10">
         <h2 className="font-heading text-xl font-semibold text-heading">
-          Cómo se ve
+          Cómo se ve un anuncio en RD Al Día
         </h2>
         <p className="mt-2 text-sm text-muted">
           Placeholders de muestra. El mismo componente sirve cuando pegues el
@@ -165,6 +167,10 @@ export default function AnunciatePage() {
           </button>
         </form>
       </section>
+      <RelatedLinks
+        title="Contacto, acerca de y noticias"
+        links={SECTION_RELATED.advertise}
+      />
     </div>
   );
 }

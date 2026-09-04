@@ -167,7 +167,7 @@ export default function CurrencyTracker({ variant = "full" }) {
         <div>
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="font-heading text-2xl font-semibold text-heading">
-              Dólar, euro y oro
+              Tasa del dólar, euro y oro
             </h2>
             <span
               className={`rounded-full px-2.5 py-0.5 text-[0.7rem] font-semibold uppercase tracking-[0.12em] ${

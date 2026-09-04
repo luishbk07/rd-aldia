@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import RelatedLinks from "@/components/RelatedLinks";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
+import { SECTION_RELATED } from "@/lib/seo/related";
 import { searchSite } from "@/lib/seo/search";
 import { getCulturePosts, getTourismDestinations } from "@/lib/sanity-content";
 import { ROUTES } from "@/lib/site";
@@ -53,7 +55,10 @@ export default async function BuscarPage({ searchParams }: Props) {
 
       {query.length >= 2 ? (
         <div className="mt-10">
-          <p className="text-sm text-muted">
+          <h2 className="font-heading text-lg font-semibold text-heading">
+            Resultados de búsqueda
+          </h2>
+          <p className="mt-2 text-sm text-muted">
             {results.length} resultado{results.length === 1 ? "" : "s"} para “{query}”
           </p>
           {results.length === 0 ? (
@@ -80,6 +85,10 @@ export default async function BuscarPage({ searchParams }: Props) {
           )}
         </div>
       ) : null}
+      <RelatedLinks
+        title="Noticias, cultura y turismo"
+        links={SECTION_RELATED.search}
+      />
     </div>
   );
 }

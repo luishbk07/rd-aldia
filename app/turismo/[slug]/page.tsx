@@ -4,11 +4,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ArticleAdLayout from "@/components/ArticleAdLayout";
 import JsonLd from "@/components/seo/JsonLd";
+import RelatedLinks from "@/components/RelatedLinks";
 import { DESTINATIONS } from "@/data/destinations";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
+import { relatedForTourism } from "@/lib/seo/related";
 import { destinationArticleSchema } from "@/lib/seo/schema";
 import {
+  getCulturePosts,
   getTourismDestination,
   getTourismDestinations,
 } from "@/lib/sanity-content";
@@ -46,8 +49,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     {
       type: "article",
+      articleExcerpt: true,
       image: destination.image,
-      imageAlt: destination.imageAlt,
+      imageAlt:
+        destination.imageAlt ||
+        `${destination.name} — turismo en República Dominicana`,
       publishedTime: destination.publishedAt,
     },
   );
@@ -55,7 +61,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function DestinationPage({ params }: Props) {
   const { slug } = await params;
-  const destination = await getTourismDestination(slug);
+  const [destination, destinations, articles] = await Promise.all([
+    getTourismDestination(slug),
+    getTourismDestinations(),
+    getCulturePosts(),
+  ]);
   if (!destination) notFound();
 
   return (
@@ -79,7 +89,10 @@ export default async function DestinationPage({ params }: Props) {
               <div className="relative mt-8 aspect-video overflow-hidden rounded-xl bg-edge">
                 <Image
                   src={destination.image}
-                  alt={destination.imageAlt}
+                  alt={
+                    destination.imageAlt ||
+                    `${destination.name} — turismo en República Dominicana`
+                  }
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 768px"
@@ -92,12 +105,22 @@ export default async function DestinationPage({ params }: Props) {
         paragraphs={destination.body}
         content={destination.content}
         footer={
-          <Link
-            href={ROUTES.tourism}
-            className="mt-10 inline-block text-sm font-semibold text-primary hover:underline dark:text-gold"
-          >
-            ← Más destinos
-          </Link>
+          <>
+            <RelatedLinks
+              title="Cultura dominicana y más destinos"
+              headingLevel="h2"
+              links={relatedForTourism(destination.slug, {
+                destinations,
+                articles,
+              })}
+            />
+            <Link
+              href={ROUTES.tourism}
+              className="mt-6 inline-block text-sm font-semibold text-primary hover:underline dark:text-gold"
+            >
+              ← Más turismo en República Dominicana
+            </Link>
+          </>
         }
       />
     </>

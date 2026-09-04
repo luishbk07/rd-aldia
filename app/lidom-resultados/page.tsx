@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import AdSlot from "@/components/AdSlot";
+import RelatedLinks from "@/components/RelatedLinks";
 import SportsSection from "@/components/SportsSection";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
+import { SECTION_RELATED } from "@/lib/seo/related";
 
 export const metadata: Metadata = pageMetadata(PAGE_SEO.sports);
 
@@ -13,7 +15,7 @@ export default function LidomResultadosPage() {
         Béisbol
       </p>
       <h1 className="mt-2 font-heading text-3xl font-semibold tracking-tight text-heading sm:text-4xl">
-        LIDOM y MLB
+        LIDOM Resultados
       </h1>
       <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
         Resultados en vivo de las Grandes Ligas y la Liga Dominicana. Sigue a
@@ -25,6 +27,10 @@ export default function LidomResultadosPage() {
       <div className="mt-10">
         <SportsSection />
       </div>
+      <RelatedLinks
+        title="Noticias, cultura y dólar RD"
+        links={SECTION_RELATED.sports}
+      />
     </div>
   );
 }

@@ -122,7 +122,7 @@ export default function WeatherSection({
     <section>
       {showHeading ? (
         <div className="flex flex-wrap items-end justify-between gap-3">
-          <SectionTitle eyebrow="Antes de salir">Clima en el país</SectionTitle>
+          <SectionTitle eyebrow="Antes de salir">Clima en República Dominicana</SectionTitle>
           {state.status === "ready" ? (
             <DataStatusBadge
               source={state.data.source === "cached" ? "cached" : "live"}

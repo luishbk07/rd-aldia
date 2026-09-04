@@ -48,7 +48,7 @@ const components = {
         <figure className="relative my-6 aspect-video overflow-hidden rounded-xl bg-edge">
           <Image
             src={src}
-            alt={value?.alt || ""}
+            alt={value?.alt || "Imagen del artículo en RD Al Día"}
             fill
             sizes="(max-width: 768px) 100vw, 768px"
             className="object-cover"

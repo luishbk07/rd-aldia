@@ -151,7 +151,7 @@ export default function NewsAggregator({
                 Prensa dominicana
               </p>
               <h2 className="mt-1 font-heading text-2xl font-semibold text-heading">
-                Noticias
+                Noticias de República Dominicana
               </h2>
             </div>
           ) : (
@@ -216,7 +216,7 @@ export default function NewsAggregator({
                     {article.image ? (
                       <img
                         src={article.image}
-                        alt=""
+                        alt={`${article.title} — ${article.source}`}
                         width={64}
                         height={64}
                         loading="lazy"

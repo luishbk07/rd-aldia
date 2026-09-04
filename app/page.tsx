@@ -23,7 +23,7 @@ export default function Home() {
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14">
       <section className="max-w-3xl">
         <SectionTitle eyebrow="Hoy en República Dominicana" as="h1">
-          Todo lo que importa, al día.
+          Noticias y datos de República Dominicana
         </SectionTitle>
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted sm:text-lg">
           Combustible, dólar, clima, béisbol, titulares, un versículo y un
@@ -50,13 +50,19 @@ export default function Home() {
             Noticias
           </Button>
           <Button href={ROUTES.sports} variant="outline">
-            Deportes
+            LIDOM resultados
+          </Button>
+          <Button href={ROUTES.culture} variant="outline">
+            Cultura
+          </Button>
+          <Button href={ROUTES.tourism} variant="outline">
+            Turismo
           </Button>
         </div>
       </section>
 
       <section id="datos-del-dia" className="mt-14">
-        <SectionTitle>Datos del día</SectionTitle>
+        <SectionTitle>Combustible, dólar y LIDOM de hoy</SectionTitle>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           <FuelPrices variant="teaser" />
           <CurrencyTracker variant="teaser" />
@@ -73,7 +79,7 @@ export default function Home() {
       </div>
 
       <section id="palabra-del-dia" className="mt-14">
-        <SectionTitle eyebrow="Cada mañana">Para el día</SectionTitle>
+        <SectionTitle eyebrow="Cada mañana">Palabra del Día y consejo financiero</SectionTitle>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Un versículo y un consejo financiero para reflexionar cada día.
           Contenido nuevo todos los días.
@@ -107,7 +113,7 @@ export default function Home() {
         id="boletin"
         className="mt-14 rounded-2xl border border-primary/20 bg-gradient-to-br from-sky-50 to-white px-5 py-8 sm:px-8 dark:border-gold/25 dark:from-primary/30 dark:to-surface"
       >
-        <SectionTitle eyebrow="Boletín">Lo esencial, en tu correo</SectionTitle>
+        <SectionTitle eyebrow="Boletín">Noticias de República Dominicana en tu correo</SectionTitle>
         <p className="mt-3 max-w-xl text-sm leading-6 text-muted">
           Combustible, dólar y titulares. Un envío al día, según el calendario
           de Santo Domingo.

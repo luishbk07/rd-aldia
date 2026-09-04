@@ -40,7 +40,7 @@ export default function AboutPage() {
 
       <section className="mt-10">
         <h2 className="font-heading text-xl font-semibold text-heading">
-          Misión
+          Misión de RD Al Día
         </h2>
         <p className="mt-2 text-base leading-7 text-muted">
           Ahorrar tiempo a quien vive y trabaja en el país. Publicamos datos
@@ -99,6 +99,9 @@ export default function AboutPage() {
         </Button>
         <Button href={ROUTES.advertise} variant="outline">
           Anúnciate
+        </Button>
+        <Button href={ROUTES.news} variant="outline">
+          Noticias
         </Button>
       </div>
     </div>

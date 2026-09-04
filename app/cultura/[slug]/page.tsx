@@ -4,11 +4,17 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ArticleAdLayout from "@/components/ArticleAdLayout";
 import JsonLd from "@/components/seo/JsonLd";
+import RelatedLinks from "@/components/RelatedLinks";
 import { CULTURE_ARTICLES } from "@/data/culture-articles";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { PAGE_SEO } from "@/lib/seo/pages";
+import { relatedForCulture } from "@/lib/seo/related";
 import { newsArticleSchema } from "@/lib/seo/schema";
-import { getCulturePost, getCulturePosts } from "@/lib/sanity-content";
+import {
+  getCulturePost,
+  getCulturePosts,
+  getTourismDestinations,
+} from "@/lib/sanity-content";
 import { ROUTES } from "@/lib/site";
 
 export const revalidate = 60;
@@ -38,8 +44,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     {
       type: "article",
+      articleExcerpt: true,
       image: article.image,
-      imageAlt: article.imageAlt,
+      imageAlt: article.imageAlt || `${article.title} — cultura dominicana`,
       publishedTime: article.publishedAt,
     },
   );
@@ -47,7 +54,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CultureArticlePage({ params }: Props) {
   const { slug } = await params;
-  const article = await getCulturePost(slug);
+  const [article, articles, destinations] = await Promise.all([
+    getCulturePost(slug),
+    getCulturePosts(),
+    getTourismDestinations(),
+  ]);
   if (!article) notFound();
 
   return (
@@ -67,7 +78,7 @@ export default async function CultureArticlePage({ params }: Props) {
               <div className="relative mt-8 aspect-video overflow-hidden rounded-xl bg-edge">
                 <Image
                   src={article.image}
-                  alt={article.imageAlt}
+                  alt={article.imageAlt || `${article.title} — cultura dominicana`}
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 768px"
@@ -80,12 +91,19 @@ export default async function CultureArticlePage({ params }: Props) {
         paragraphs={article.body}
         content={article.content}
         footer={
-          <Link
-            href={ROUTES.culture}
-            className="mt-10 inline-block text-sm font-semibold text-primary hover:underline dark:text-gold"
-          >
-            ← Más cultura
-          </Link>
+          <>
+            <RelatedLinks
+              title="Turismo y más cultura dominicana"
+              headingLevel="h2"
+              links={relatedForCulture(article.slug, { articles, destinations })}
+            />
+            <Link
+              href={ROUTES.culture}
+              className="mt-6 inline-block text-sm font-semibold text-primary hover:underline dark:text-gold"
+            >
+              ← Más cultura dominicana
+            </Link>
+          </>
         }
       />
     </>
