@@ -11,7 +11,7 @@ export default function ClimaPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-        Pronóstico · Windy
+        Clima en el país
       </p>
       <h1 className="mt-2 font-heading text-3xl font-semibold tracking-tight text-heading sm:text-4xl">
         Clima en República Dominicana

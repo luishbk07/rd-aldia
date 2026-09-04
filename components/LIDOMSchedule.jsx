@@ -11,8 +11,7 @@ export default function LIDOMSchedule({ today = [], tomorrow = [] }) {
   if (!today.length && !tomorrow.length) {
     return (
       <p className="text-sm text-white/70">
-        No hay partidos programados para hoy o mañana. Cárgalos en el panel (estado
-        “Programado”).
+        No hay partidos programados para hoy o mañana.
       </p>
     );
   }

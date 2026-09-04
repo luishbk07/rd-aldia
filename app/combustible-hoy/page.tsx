@@ -16,8 +16,7 @@ export default function CombustibleHoyPage() {
         Combustible hoy
       </h1>
       <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-        El MICM fija los precios cada viernes. No hay API en tiempo real: RD Al
-        Día publica la vigencia semanal (cinco productos al consumidor).
+        Precios oficiales del MICM. Actualizado cada viernes.
       </p>
       <div className="mt-8 flex justify-center md:hidden">
         <AdSlot size="mobile-banner" position="section-between" />

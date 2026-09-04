@@ -17,7 +17,7 @@ export default function MLBDominicans({ players = [], error }) {
     <div>
       <h3 className="mb-3 font-heading text-lg font-semibold">Dominicanos en MLB 🇩🇴</h3>
       <p className="mb-3 text-sm text-white/65">
-        Temporada en curso · AVG, HR, RBI y OPS vía Stats API (sin intervención manual).
+        Temporada en curso · promedio, jonrones, impulsadas y OPS.
       </p>
       <div className="overflow-x-auto rounded-xl border border-white/10">
         <table className="min-w-[640px] w-full text-left text-sm text-white">

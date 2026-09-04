@@ -182,7 +182,8 @@ export default function SportsSection({ variant = "full" }) {
           />
         </div>
         <p className="mt-1 text-sm text-white/80">
-          MLB se actualiza solo. LIDOM se publica en el panel (no hay API pública).
+          Resultados en vivo de las Grandes Ligas y la Liga Dominicana. Sigue a
+          tus equipos y peloteros favoritos.
         </p>
       </div>
 
@@ -278,7 +279,7 @@ export default function SportsSection({ variant = "full" }) {
           ) : (
             <p className="mt-4 px-5 text-sm text-white/70">
               {lidom.inSeason
-                ? "Publica resultados LIDOM en el panel de administración."
+                ? "Los resultados de LIDOM se publican cuando hay jornada."
                 : "LIDOM vuelve en octubre. Mientras, sigue a los dominicanos en MLB."}
             </p>
           )}

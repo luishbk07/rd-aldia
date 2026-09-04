@@ -15,6 +15,8 @@ export default function DataStatusBadge({
   updatedAt,
   className = "",
   tone = "light",
+  liveLabel = "En vivo",
+  cachedLabel = "Última actualización",
 }) {
   const cached = source === "cached";
   const age = cached ? hoursOld(updatedAt) : null;
@@ -31,8 +33,8 @@ export default function DataStatusBadge({
         aria-hidden="true"
       />
       {cached
-        ? `Datos en caché${age ? ` · ${age}` : ""}`
-        : "En vivo"}
+        ? `${cachedLabel}${age ? ` · ${age}` : ""}`
+        : liveLabel}
     </span>
   );
 }

@@ -120,7 +120,7 @@ export default function WindyMap() {
       </div>
 
       <p className="border-t border-edge px-4 py-3 text-xs text-muted sm:px-5">
-        Pronóstico ECMWF vía Windy · capa {current.label.toLowerCase()}
+        Mapa del clima · capa {current.label.toLowerCase()}
       </p>
     </section>
   );

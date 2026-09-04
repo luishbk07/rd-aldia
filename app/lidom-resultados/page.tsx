@@ -16,8 +16,8 @@ export default function LidomResultadosPage() {
         LIDOM y MLB
       </h1>
       <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-        MLB se actualiza solo desde la Stats API. LIDOM no tiene API pública: los
-        resultados se publican en el panel, igual que el combustible.
+        Resultados en vivo de las Grandes Ligas y la Liga Dominicana. Sigue a
+        tus equipos y peloteros favoritos.
       </p>
       <div className="mt-8 flex justify-center md:hidden">
         <AdSlot size="mobile-banner" position="section-between" />

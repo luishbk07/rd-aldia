@@ -74,7 +74,8 @@ export default function FuelPrices({ variant = "full" }) {
       <div className="rounded-xl border border-dashed border-edge bg-surface p-6">
         <p className="font-heading font-semibold text-heading">Combustibles</p>
         <p className="mt-2 text-sm text-muted">
-          Aún no hay precios semanales. Se publican cada viernes en el panel.
+          Aún no hay precios semanales. Precios oficiales del MICM. Actualizado
+          cada viernes.
         </p>
       </div>
     );
@@ -95,7 +96,12 @@ export default function FuelPrices({ variant = "full" }) {
         </p>
         <p className="mt-1 text-sm text-muted">{validity}</p>
         <div className="mt-3">
-          <DataStatusBadge source={dataSource} updatedAt={fuel.updatedAt} />
+          <DataStatusBadge
+            source={dataSource}
+            updatedAt={fuel.updatedAt}
+            liveLabel="Precios oficiales del MICM"
+            cachedLabel="Precios oficiales del MICM"
+          />
         </div>
       </Card>
     );
@@ -110,10 +116,15 @@ export default function FuelPrices({ variant = "full" }) {
         <h2 className="font-heading text-2xl font-semibold text-heading">
           Combustibles
         </h2>
-        <DataStatusBadge source={dataSource} updatedAt={fuel.updatedAt} />
+        <DataStatusBadge
+          source={dataSource}
+          updatedAt={fuel.updatedAt}
+          liveLabel="Precios oficiales del MICM"
+          cachedLabel="Precios oficiales del MICM"
+        />
       </div>
       <p className="mt-2 text-sm font-medium text-heading">{validity}</p>
-      <p className="mt-1 text-sm text-muted">RD$ por galón · MICM</p>
+      <p className="mt-1 text-sm text-muted">RD$ por galón · actualizado cada viernes</p>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {products.map((product) => (

@@ -175,7 +175,8 @@ export default function WeatherSection({
       ) : null}
 
       <p className="mt-4 text-xs text-muted">
-        Pronóstico Open-Meteo · hora de Santo Domingo
+        Clima en tiempo real para las principales ciudades del país. Datos
+        actualizados automáticamente.
       </p>
     </section>
   );

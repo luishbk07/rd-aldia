@@ -176,7 +176,7 @@ export default function WeatherMap() {
             Radar, temperatura y viento
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-muted">
-            Capa de lluvia de RainViewer y malla Open-Meteo sobre República Dominicana.
+            Radar de lluvia, temperatura y viento sobre República Dominicana.
           </p>
         </div>
 

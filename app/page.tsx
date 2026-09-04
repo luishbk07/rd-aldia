@@ -75,8 +75,8 @@ export default function Home() {
       <section id="palabra-del-dia" className="mt-14">
         <SectionTitle eyebrow="Cada mañana">Para el día</SectionTitle>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Un versículo y un consejo de bolsillo. Cambian solos, según el
-          calendario de Santo Domingo.
+          Un versículo y un consejo financiero para reflexionar cada día.
+          Contenido nuevo todos los días.
         </p>
         <div className="mt-8 grid gap-4 lg:grid-cols-2 lg:items-stretch">
           <DailyVerse />
