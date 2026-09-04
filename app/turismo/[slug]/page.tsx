@@ -48,6 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       image: destination.image,
       imageAlt: destination.imageAlt,
+      publishedTime: destination.publishedAt,
     },
   );
 }

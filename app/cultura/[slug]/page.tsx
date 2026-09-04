@@ -36,7 +36,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       path: `${ROUTES.culture}/${article.slug}`,
       keywords: ["cultura dominicana", "artículo", article.title],
     },
-    { type: "article", image: article.image, imageAlt: article.imageAlt },
+    {
+      type: "article",
+      image: article.image,
+      imageAlt: article.imageAlt,
+      publishedTime: article.publishedAt,
+    },
   );
 }
 

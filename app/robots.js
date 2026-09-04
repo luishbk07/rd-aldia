@@ -1,5 +1,6 @@
 import { getSiteUrl } from "@/lib/site";
 
+/** Serves /robots.txt. Static app/robots.txt would clash with this file. */
 export default function robots() {
   const site = getSiteUrl();
 
@@ -8,7 +9,7 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/admin/", "/api/admin", "/api/admin/", "/studio", "/studio/"],
+        disallow: ["/admin", "/api", "/studio"],
       },
     ],
     sitemap: `${site}/sitemap.xml`,
