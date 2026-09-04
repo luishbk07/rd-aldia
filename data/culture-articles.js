@@ -42,7 +42,7 @@ export const CULTURE_ARTICLES = [
       "De los bares mal vistos a las listas globales. La historia de un género que nació herido y terminó abrazando al mundo.",
     readMinutes: 6,
     featured: true,
-    image: unsplash("photo-1547153760-18fc86324438"),
+    image: unsplash("photo-1470229722913-7c0e2dbbafd3"),
     imageAlt: "Pareja bailando bachata en un salón de República Dominicana",
     body: [
       "Hubo un tiempo en que la bachata era «música de guardia». Se escondía en bares, en radios de pueblo, en casetes que nadie ponía en la sala cuando llegaba visita. Hablaba de abandono, de ron y de cartas que no llegaban.",
