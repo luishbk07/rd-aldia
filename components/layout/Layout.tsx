@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useId, useState, type ReactNode } from "react";
 import AdSlot from "@/components/AdSlot";
+import NewsletterForm from "@/components/NewsletterForm";
+import NewsletterPopup from "@/components/NewsletterPopup";
 import { ThemeToggle } from "@/components/ui";
 import { NAV_LINKS, ROUTES, SITE_NAME, SOCIAL_LINKS } from "@/lib/site";
 
@@ -288,52 +290,6 @@ function Header() {
   );
 }
 
-function NewsletterForm() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
-
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!email.trim()) return;
-    setStatus("sent");
-    setEmail("");
-  }
-
-  return (
-    <form onSubmit={onSubmit} className="space-y-3" noValidate>
-      <label htmlFor="newsletter-email" className="sr-only">
-        Correo electrónico
-      </label>
-      <div className="flex flex-col gap-2 sm:flex-row">
-        <input
-          id="newsletter-email"
-          type="email"
-          name="email"
-          required
-          value={email}
-          onChange={(event) => {
-            setEmail(event.target.value);
-            setStatus("idle");
-          }}
-          placeholder="tu@correo.com"
-          className="h-11 w-full rounded-md border border-white/15 bg-white/8 px-3 text-sm text-white placeholder:text-white/45 outline-none ring-rd-red/40 focus:ring-2"
-        />
-        <button
-          type="submit"
-          className="h-11 shrink-0 rounded-md bg-rd-red px-4 text-sm font-semibold text-white transition-colors hover:bg-[#a30e26]"
-        >
-          Suscribirse
-        </button>
-      </div>
-      <p className="text-xs leading-5 text-white/60" aria-live="polite">
-        {status === "sent"
-          ? "Gracias. El boletín estará disponible pronto."
-          : "Recibe combustible, dólar y titulares cada mañana. Placeholder — sin envío real."}
-      </p>
-    </form>
-  );
-}
-
 function Footer() {
   const year = new Date().getFullYear();
 
@@ -429,7 +385,7 @@ function Footer() {
           <p className="mt-4 mb-4 text-sm leading-6 text-white/70">
             Lo esencial de RD, de lunes a domingo.
           </p>
-          <NewsletterForm />
+          <NewsletterForm variant="footer" id="newsletter-footer-email" />
         </div>
       </div>
 
@@ -479,6 +435,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         {children}
       </main>
       <Footer />
+      <NewsletterPopup />
     </div>
   );
 }

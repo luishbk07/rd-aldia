@@ -7,6 +7,7 @@ import FinancialTip from "@/components/FinancialTip";
 import FuelPrices from "@/components/FuelPrices";
 import HomeFeatured from "@/components/HomeFeatured";
 import NewsAggregator from "@/components/NewsAggregator";
+import NewsletterForm from "@/components/NewsletterForm";
 import SportsSection from "@/components/SportsSection";
 import WeatherSection from "@/components/WeatherSection";
 import { Button, SectionTitle } from "@/components/ui";
@@ -101,6 +102,20 @@ export default function Home() {
       <div className="mt-10 flex justify-center md:hidden">
         <AdSlot size="mobile-banner" position="home-after-destacados" />
       </div>
+
+      <section
+        id="boletin"
+        className="mt-14 rounded-2xl border border-primary/20 bg-gradient-to-br from-sky-50 to-white px-5 py-8 sm:px-8 dark:border-gold/25 dark:from-primary/30 dark:to-surface"
+      >
+        <SectionTitle eyebrow="Boletín">Lo esencial, en tu correo</SectionTitle>
+        <p className="mt-3 max-w-xl text-sm leading-6 text-muted">
+          Combustible, dólar y titulares. Un envío al día, según el calendario
+          de Santo Domingo.
+        </p>
+        <div className="mt-6 max-w-lg">
+          <NewsletterForm id="newsletter-home-email" />
+        </div>
+      </section>
 
       <section id="noticias" className="mt-14 max-w-3xl">
         <NewsAggregator limit={12} />
